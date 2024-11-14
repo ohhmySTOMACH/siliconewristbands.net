@@ -1,6 +1,6 @@
 "use client";
 import Banner from "@/components/Banner";
-import { ContactPage } from "@/components/contact-page";
+import { ContactPage } from "@/components/ContactPage";
 
 export default function Page() {
   return (

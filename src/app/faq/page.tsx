@@ -1,5 +1,5 @@
 import Banner from "@/components/Banner";
-import FaqContent from "@/components/faq-content";
+import FaqContent from "@/components/FaqContent";
 
 export default function Page() {
   return (
