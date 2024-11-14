@@ -1,0 +1,46 @@
+"use server";
+import MERCHI from "@/utils/merchi";
+import { fetchSSR } from "@/utils/merchi-ssr";
+import Banner from "@/components/Banner";
+import PublicProductWithMerchiCheckout from "@/public_components/PublicProductWithMerchiCheckout";
+
+async function getProductData(id: string) {
+  const newProduct = new MERCHI.Product();
+  newProduct.id(id);
+
+  const embedProduct = {
+    categories: {},
+    component: {},
+    defaultJob: {},
+    domain: {
+      activeTheme: { mainCss: {} },
+      logo: {},
+    },
+    draftTemplates: { file: {} },
+    groupBuyStatus: {},
+    groupVariationFields: { options: { linkedFile: {} } },
+    images: {},
+    independentVariationFields: { options: { linkedFile: {} } },
+    publicFiles: {},
+  };
+
+  const productData = await fetchSSR(newProduct, embedProduct);
+
+  return productData;
+}
+
+export default async function Page(props: any) {
+  const id = props.params.id;
+  const productData = await getProductData(id);
+  const product = productData.props.data;
+  // console.log("Log - Current Product: ", product);
+
+  return (
+    <main className="main">
+      <Banner>
+        <h1 className="text-2xl">Order Now</h1>
+      </Banner>
+      <PublicProductWithMerchiCheckout productJson={product} />
+    </main>
+  );
+}

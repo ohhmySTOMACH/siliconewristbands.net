@@ -1,0 +1,216 @@
+ul {
+  list-style-type: none;
+}
+
+.nav-cart-button ul {
+  margin-bottom: 0 !important;
+}
+
+button.btn.cart-icon-button-class {
+  border: none;
+}
+
+.cart-icon-button-class .fa-cart-shopping,
+.checkout-tab-button {
+  background: linear-gradient(to bottom, #6fbef3 10%, #4a8eda 100%);
+  background-color: #5ba4e6;
+  /* Fallback color for older browsers */
+  border: 1px solid #215990;
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#6fbef3', EndColorStr='#4a8eda');
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.cart-icon-button-class:hover .fa-cart-shopping:hover,
+.checkout-tab-button:hover {
+  background: linear-gradient(to bottom, #74c5f9 10%, #4f96e7 100%);
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#74c5f9', EndColorStr='#4f96e7');
+}
+
+button.btn.cart-icon-button-class {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  align-items: center;
+  padding-right: 0;
+}
+
+.merchi-cart-badge {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.modal {
+  z-index: 1050;
+}
+
+.modal-dialog {
+  position: fixed !important;
+  top: 0;
+  margin: 0 !important;
+  right: 0 !important;
+  left: unset !important;
+  height: 100% !important;
+  max-width: 450px;
+  padding: 0 !important;
+  border-radius: 0;
+  background-color: #fff;
+  overflow-y: auto;
+
+  @media screen and (max-width: 425px) {
+    max-width: 100%;
+  }
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateX(100%);
+}
+
+.modal.show .modal-dialog {
+  transform: translateX(0);
+}
+
+.modal-content {
+  /* border-radius: 0; */
+  padding: 1.5rem;
+  height: 100%;
+  border: 0;
+}
+
+.modal-content .merchi-nav-tabs {
+  display: none;
+}
+
+.merchi-nav-pills .merchi-nav-link.active {
+  background-color: #5ba4e6;
+}
+
+div[style*="width: 700px;"] {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  @media screen and (max-width: 425px) {
+    width: 300px !important;
+  }
+}
+
+.merchi-tab-panel .text-muted {
+  margin-left: -31.5rem;
+  width: 100% !important;
+}
+
+.merchi-tab-pane {
+  padding-bottom: 3rem;
+}
+
+td.border-0.align-middle.text-right {
+  text-align: center;
+}
+
+.merchi-cart-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.merchi-cart-body {
+  padding-top: 1 rem !important;
+}
+
+.merchi-row {
+  gap: 1rem;
+}
+
+.merchi-discount-group-container {
+  align-items: center !important;
+  gap: 1rem;
+}
+
+.merchi-cart-footer {
+  flex-direction: row;
+  padding-top: 2rem;
+  gap: 2rem;
+  justify-content: center;
+
+  @media screen and (max-width: 425px) {
+    gap: 1rem;
+  }
+}
+
+.merchi-cart-footer {
+  display: none;
+}
+
+/* Backdrop Overlay */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent overlay */
+  z-index: 1040;
+  /* Behind the drawer */
+}
+
+/* Checkout Page */
+.merchi-cart-tab-content {
+  flex-direction: column;
+}
+
+.checkout-info .merchi-tab-panel,
+.checkout-info .merchi-cart-body,
+.checkout-info .merchi-cart-tab-content {
+  display: flex !important;
+  width: 100% !important;
+}
+
+.checkout-info .merchi-cart-tab-content div {
+  width: 100% !important;
+  flex-direction: column;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+}
+
+.merchi-cart-body {
+  flex-direction: column;
+}
+
+.merchi-cart-body div[style="width: 400px;"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.merchi-cart-body div[style="width:400px"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+span.text-muted {
+  margin-left: 1rem !important;
+}
