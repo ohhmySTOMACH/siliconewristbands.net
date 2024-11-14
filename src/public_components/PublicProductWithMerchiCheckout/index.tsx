@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { doAddCartItem, doToggleCartOpen } from "merchi_cart/src";
+// import { doAddCartItem, doToggleCartOpen } from "merchi_cart/src";
 import { getNextBackendUri } from "../utilities";
 import MerchiProductForm from "merchi_product_form";
 import dynamic from "next/dynamic";
@@ -78,8 +78,8 @@ function PublicProductWithMerchiCheckout({
   };
 
   const addToCart = (jobJson: any) => {
-    // console.log("Log - jobJson:", jobJson);
-    doAddCartItem(jobJson, () => doToggleCartOpen(), customErrorHandler);
+    console.log("Log - jobJson:", jobJson);
+    // doAddCartItem(jobJson, () => doToggleCartOpen(), customErrorHandler);
   };
 
   return (

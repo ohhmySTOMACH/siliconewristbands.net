@@ -15,6 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const { loadingTotals } = useCartContext();
+  const defaultAlert = {
+    icon: null,
+    message: "Default message",
+    show: true,
+    title: "Alert Title",
+    type: "info" as "info" | "success" | "danger" | "warning" | undefined,
+  };
+
   return (
     <html lang="en" className="h-100">
       <head></head>
@@ -34,7 +42,7 @@ export default function RootLayout({
           setCart={() => {}}
           activeTabIndex={0}
           setActiveTabIndex={() => {}}
-          alert={null}
+          alert={defaultAlert}
           alertError={(message: string) => {}}
           alertSuccess={(message: string) => {}}
           setAlert={() => {}}
