@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "@/styles/globals.css";
 import HeaderNavigation from "@/components/navigation/HeaderNavigation";
 import Footer from "../components/Footer";
-import { useCartContext } from "merchi_cart/src/CartProvider";
 
 export const metadata = {
   title: "Silicone Wristbands | Easy Online Ordering, Free Shipping",
@@ -14,59 +13,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { loadingTotals } = useCartContext();
-  const defaultAlert = {
-    icon: null,
-    message: "Default message",
-    show: true,
-    title: "Alert Title",
-    type: "info" as "info" | "success" | "danger" | "warning" | undefined,
-  };
-
   return (
     <html lang="en" className="h-100">
       <head></head>
       <body>
-        <HeaderNavigation
-          cartButtonWrappedInContainer={true}
-          cartIconButtonClass=""
-          currentUser={null}
-          customSuccessMessage=""
-          domainId={0}
-          listContainerClass=""
-          listItemClass=""
-          showOpenCartButton={true}
-          size=""
-          storeId={0}
-          cart={[]}
-          setCart={() => {}}
-          activeTabIndex={0}
-          setActiveTabIndex={() => {}}
-          alert={defaultAlert}
-          alertError={(message: string) => {}}
-          alertSuccess={(message: string) => {}}
-          setAlert={() => {}}
-          cartItem={null}
-          invoiceJson={null}
-          setInvoiceJson={() => {}}
-          cartSettingsInvalid={false}
-          fetchingCart={true}
-          setFetchingCart={() => {}}
-          fetchingShipmentGroups={true}
-          toggleCartModal={() => {}}
-          updateCartShipmentAddress={() => {}}
-          setCartItem={() => {}}
-          tabs={[]}
-          setTabs={() => {}}
-          clearCart={() => {}}
-          closeClearCart={() => {}}
-          setCartComplete={() => {}}
-          refetchCart={() => {}}
-          loadingTotals={true}
-          setLoadingTotals={() => {}}
-          setActiveTabAndEditDisabled={() => {}}
-          loading={true}
-        />
+        <HeaderNavigation />
         {children}
         <Footer />
       </body>

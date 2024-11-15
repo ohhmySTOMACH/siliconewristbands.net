@@ -1,6 +1,6 @@
 const FaqTableOfContent = () => {
   return (
-    <div id="sidebar" className="w-1/3">
+    <div id="sidebar" className="w-full sm:w-1/3">
       <div className="sticky top-40">
         <ul className="p-4 nav flex flex-col space-y-2 border border-gray-300 shadow-sm rounded-md">
           <li>
@@ -90,7 +90,7 @@ const FaqTableOfContent = () => {
 };
 const MainContent = () => {
   return (
-    <div className="w-2/3 pl-4 mb-16">
+    <div className="sm:w-2/3 pl-4 mb-16">
       <div className="faq">
         <h3 className="text-lg font-semibold mt-6">
           <a id="What are your turn around times?"></a>What are your turn around
@@ -221,8 +221,8 @@ const MainContent = () => {
 export default function FaqContent() {
   return (
     <div id="single-post">
-      <div className="container mx-auto pt-10 px-16">
-        <div className="flex flex-row gap-4">
+      <div className="container mx-auto px-4 pt-10 w-full sm:px-16">
+        <div className="flex flex-col sm:flex-row gap-4">
           <FaqTableOfContent />
           <MainContent />
         </div>

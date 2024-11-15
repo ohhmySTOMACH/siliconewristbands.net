@@ -3,27 +3,21 @@ import React, { useState } from "react";
 import logo from "../../../public/images/logo.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import MainNav from "./MainNav";
-import { MerchiCartModal } from "merchi_cart/src";
+import { MerchiCartModal } from "merchi_cart";
 import "@/styles/merchi-cart-modal.css";
 import "@/styles/customized-product-form.css";
 import Image from "next/image";
-import { PropsCart } from "merchi_cart/src/CartProvider";
+import CheckoutFooter from "@/components/CheckoutButton";
 
-interface Props extends PropsCart {
-  cartButtonWrappedInContainer?: boolean;
-  cartIconButtonClass?: string;
-  currentUser?: any;
-  customSuccessMessage?: string;
-  domainId?: number;
-  listContainerClass?: string;
-  listItemClass?: string;
-  showOpenCartButton?: boolean;
-  size?: string;
-  storeId?: number;
-}
-
-function HeaderNavigation(props: Props) {
+function HeaderNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const defaultAlert = {
+    icon: null,
+    message: "Default message",
+    show: true,
+    title: "Alert Title",
+    type: "info" as "info" | "success" | "danger" | "warning" | undefined,
+  };
 
   return (
     <div>
@@ -78,7 +72,12 @@ function HeaderNavigation(props: Props) {
               </div>
             </a>
             <div className="nav-cart-button">
-              <MerchiCartModal {...props} domainId={206} />
+              <MerchiCartModal
+                cartButtonWrappedInContainer={true}
+                domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+                loading={true}
+                footer={<CheckoutFooter />}
+              />
             </div>
           </div>
 

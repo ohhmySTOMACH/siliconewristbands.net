@@ -1,23 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   webpack: (config) => {
-    config.module.rules.push(
-      {
-        test: /\.[jt]sx?$/,
-        include: /node_modules\/merchi_cart/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["next/babel"],
-          },
+    config.module.rules.push({
+      test: /\.[jt]sx?$/,
+      include: /node_modules\/merchi_cart/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          presets: ["next/babel"],
         },
       },
-      {
-        test: /\.(ts|tsx)$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
-      }
-    );
+    });
     return config;
   },
   images: {

@@ -1,12 +1,11 @@
 "use client";
 
 import CheckoutSummary from "@/components/Checkout-summary";
-import { PropsCart } from "merchi_cart/src/CartProvider";
 
-export default function Page(props: PropsCart) {
+export default function Page() {
   return (
     <main className="main">
-      <CheckoutSummary {...props} />
+      <CheckoutSummary />
       {/* <Cart /> */}
     </main>
   );

@@ -1,20 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import {
-  PanelCartItems,
-  PanelCartShipment,
-  PanelClearCart,
-  PanelClientCheckout,
-  PanelEditCartItem,
-} from "merchi_cart/src/panels";
-import { Button } from "merchi_cart/src/buttons";
-// import { actionFetchTheme, initMerchiCart } from "merchi_cart/src/store";
-import CartProvider, {
-  PropsCart,
   useCartContext,
-} from "merchi_cart/src/CartProvider";
-import { shipmentFormId } from "merchi_cart/src/utilities/shipment";
-import { tabIdShipment } from "merchi_cart/src/utilities/tabs";
+  CartProvider,
+  panels,
+  utilities,
+  buttons,
+} from "merchi_cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import "@/styles/merchi-cart-modal.css";
@@ -24,33 +16,32 @@ export function CheckoutComponents(): JSX.Element {
     activeTabIndex,
     cart,
     domainId,
-    // includeTheme,
-    // initialiseCart,
-    setActiveTabIndex,
+    fetchingShipmentGroups,
     loadingTotals,
+    setActiveTabIndex,
   } = useCartContext();
 
-  console.log("Log-loadingTotals:", loadingTotals);
-  console.log("Log-domainId:", domainId);
+  const { shipmentGroups } = cart;
 
   const [isOpen, setIsOpen] = useState(false);
 
   const [activePanel, setActivePanel] = useState("shipping");
 
+  const { refetchCart } = useCartContext();
+
   const toggleCart = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = !prevIsOpen;
+      refetchCart();
+      return newIsOpen;
+    });
   };
 
-  // useEffect(() => {
-  //   if (initialiseCart && domainId) {
-  //     if (includeTheme) {
-  //       actionFetchTheme(domainId);
-  //     }
-  //     initMerchiCart(domainId);
-  //   }
-  // }, [domainId, includeTheme, initialiseCart]);
-
-  console.log("Log-activeTabIndexId:", activeTabIndex);
+  console.log("Log-domainId:", domainId);
+  console.log("Log-shipmentGroups length:", shipmentGroups);
+  // if (typeof window !== "undefined") {
+  //   (window as any).refetchCart();
+  // }
 
   useEffect(() => {
     if (activeTabIndex === 2) {
@@ -61,7 +52,7 @@ export function CheckoutComponents(): JSX.Element {
   }, [activeTabIndex]);
 
   const handleBackClick = () => {
-    setActiveTabIndex(tabIdShipment);
+    setActiveTabIndex(utilities.tabIdShipment);
     setActivePanel("shipping");
   };
 
@@ -123,9 +114,9 @@ export function CheckoutComponents(): JSX.Element {
           >
             <div className="p-4 bg-transparent">
               <div className="space-y-4">
-                <PanelCartItems />
-                <PanelEditCartItem cart={cart} />
-                <PanelClearCart />
+                <panels.PanelCartItems />
+                <panels.PanelEditCartItem cart={cart} />
+                <panels.PanelClearCart />
               </div>
             </div>
           </div>
@@ -167,20 +158,20 @@ export function CheckoutComponents(): JSX.Element {
                 activePanel === "shipping" ? "flex" : "hidden"
               } w-full`}
             >
-              <PanelCartShipment />
+              <panels.PanelCartShipment />
               {/* <ButtonNextDynamic /> */}
               {/* Everytime on this page should recheck the form validation */}
-              <Button
+              <buttons.Button
                 disabled={loadingTotals}
                 className="checkout-tab-button mt-4 px-4 py-2"
-                form={shipmentFormId}
+                form={utilities.shipmentFormId}
                 type="submit"
               >
                 {loadingTotals && <FontAwesomeIcon icon={faCircleNotch} spin />}
                 <span style={{ marginLeft: loadingTotals ? "5px" : "0" }}>
                   {loadingTotals ? "Loading..." : "Continue to Information"}
                 </span>
-              </Button>
+              </buttons.Button>
             </div>
 
             {/* Display Payment panel if active */}
@@ -189,13 +180,7 @@ export function CheckoutComponents(): JSX.Element {
                 activePanel === "payment" ? "flex" : "hidden"
               } w-full`}
             >
-              <PanelClientCheckout />
-              {/* <button
-                onClick={() => setActivePanel("confirmation")}
-                className="checkout-tab-button mt-4 px-4 py-2"
-              >
-                Continue to Payment
-              </button> */}
+              <panels.PanelClientCheckout />
               <div
                 className="flex items-center mt-4 text-text-blue cursor-pointer hover:text-[#0079aa]"
                 onClick={handleBackClick}
@@ -224,9 +209,9 @@ export function CheckoutComponents(): JSX.Element {
   );
 }
 
-export default function CheckoutSummary(props: PropsCart): JSX.Element {
+export default function CheckoutSummary(): JSX.Element {
   return (
-    <CartProvider {...props} domainId={206}>
+    <CartProvider domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}>
       <CheckoutComponents />
     </CartProvider>
   );

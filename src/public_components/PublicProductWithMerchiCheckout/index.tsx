@@ -53,7 +53,6 @@ function PublicProductWithMerchiCheckout({
   redirectAfterSuccessUrl,
   redirectAfterQuoteSuccessUrl,
   redirectWithValue,
-  singleColumn,
 }: Props) {
   const [product, setProduct] = useState(productJson || {});
   const [isOpen, setIsOpen] = useState(false);
@@ -61,7 +60,6 @@ function PublicProductWithMerchiCheckout({
   const defaultJob = (productJson && productJson.defaultJob) || {};
   const [job, setJob] = useState({ client: currentUser || {}, ...defaultJob });
   const [isBuyNow, setIsBuy] = useState(false);
-
   console.log("Log - currentUser:", currentUser);
 
   const openCheckoutModal = (job: any, isBuyNow: boolean) => {
@@ -77,9 +75,20 @@ function PublicProductWithMerchiCheckout({
     );
   };
 
+  const onSuccessfulAddToCart = () => {
+    (window as any).toggleCartOpen();
+  };
+
   const addToCart = (jobJson: any) => {
     console.log("Log - jobJson:", jobJson);
-    // doAddCartItem(jobJson, () => doToggleCartOpen(), customErrorHandler);
+
+    if (window && typeof window !== "undefined") {
+      (window as any).addCartItem(
+        jobJson,
+        onSuccessfulAddToCart,
+        customErrorHandler
+      );
+    }
   };
 
   return (
@@ -103,8 +112,6 @@ function PublicProductWithMerchiCheckout({
               hideTitle={hideTitle}
               initProduct={product}
               onAddToCart={(jobJson: any) => addToCart(jobJson)}
-              // onBuyNow={(job: any) => openCheckoutModal(job, true)}
-              // onGetQuote={(job: any) => openCheckoutModal(job, false)}
             />
           </div>
         </div>

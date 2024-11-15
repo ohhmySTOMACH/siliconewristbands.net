@@ -28,9 +28,9 @@ export default function MainNav({ pathname }: Props) {
         <li className="w-full md:flex md:items-center">
           <a
             href="/"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
@@ -40,9 +40,9 @@ export default function MainNav({ pathname }: Props) {
         <li className="w-full md:flex md:items-center">
           <a
             href="/order"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black whitespace-nowrap ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black whitespace-nowrap ${
               navItemIsActive("/order")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
@@ -52,9 +52,9 @@ export default function MainNav({ pathname }: Props) {
         <li className="w-full md:flex md:items-center">
           <a
             href="/about"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/about")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
@@ -76,9 +76,9 @@ export default function MainNav({ pathname }: Props) {
         <li className="w-full md:flex md:items-center">
           <a
             href="/contact"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/contact")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6 "
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6 "
                 : ""
             }`}
           >

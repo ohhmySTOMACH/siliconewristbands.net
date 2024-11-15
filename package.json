@@ -20,12 +20,13 @@
     "@mui/material": "^5.13.7",
     "@stripe/react-stripe-js": "^2.1.1",
     "@stripe/stripe-js": "^1.54.1",
+    "@types/node": "20.3.3",
     "bootstrap": "^5.3.0",
     "debounce": "^1.2.1",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "immutability-helper": "^3.1.1",
-    "merchi_cart": "file:../merchi_cart",
+    "merchi_cart": "1.0.0-test-r",
     "merchi_checkout": "1.0.10",
     "merchi_product_form": "1.0.18",
     "merchi_sdk_js": "^0.0.31",
@@ -39,16 +40,14 @@
     "react-icons": "^5.3.0",
     "react-redux": "^9.1.2",
     "reactstrap": "^9.2.3",
-    "stripe": "^12.13.0"
+    "stripe": "^12.13.0",
+    "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.6.3"
+    "tailwindcss": "^3.4.14"
   }
 }

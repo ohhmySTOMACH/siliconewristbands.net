@@ -6,10 +6,11 @@ import { useSSR } from "../utils/merchi-ssr";
 import ProductTile from "@/components/ProductTile";
 
 async function getProducts() {
+  console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
   return useSSR(
     (onSuccess: (products: any) => void, onFailed: (error: any) => void) => {
       MERCHI.products.get(onSuccess, onFailed, {
-        inDomain: 206,
+        inDomain: Number(process.env.NEXT_PUBLIC_DOMAIN_ID),
         embed: {
           categories: {},
           component: {},
