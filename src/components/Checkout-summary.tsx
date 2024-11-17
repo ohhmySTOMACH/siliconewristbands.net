@@ -37,11 +37,10 @@ export function CheckoutComponents(): JSX.Element {
     });
   };
 
-  console.log("Log-domainId:", domainId);
+  // console.log("Log-domainId:", domainId);
+
+  console.log("Log-fetchingShipmentGroups:", fetchingShipmentGroups);
   console.log("Log-shipmentGroups length:", shipmentGroups);
-  // if (typeof window !== "undefined") {
-  //   (window as any).refetchCart();
-  // }
 
   useEffect(() => {
     if (activeTabIndex === 2) {
@@ -159,7 +158,6 @@ export function CheckoutComponents(): JSX.Element {
               } w-full`}
             >
               <panels.PanelCartShipment />
-              {/* <ButtonNextDynamic /> */}
               {/* Everytime on this page should recheck the form validation */}
               <buttons.Button
                 disabled={loadingTotals}
