@@ -81,6 +81,7 @@ button.btn.cart-icon-button-class {
 
   @media screen and (max-width: 425px) {
     max-width: 100%;
+    width: 100%;
   }
 }
 

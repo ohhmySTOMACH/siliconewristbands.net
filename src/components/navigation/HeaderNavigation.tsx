@@ -10,9 +10,11 @@ import Image from "next/image";
 import CheckoutFooter from "@/components/CheckoutButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 
 function HeaderNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentPath = usePathname();
 
   return (
     <div>
@@ -58,12 +60,14 @@ function HeaderNavigation() {
               </div>
             </a>
             <div className="nav-cart-button">
-              <MerchiCartModal
-                cartButtonWrappedInContainer={true}
-                domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
-                loading={true}
-                footer={<CheckoutFooter />}
-              />
+              {currentPath !== "/checkouts" && (
+                <MerchiCartModal
+                  cartButtonWrappedInContainer={true}
+                  domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+                  loading={true}
+                  footer={<CheckoutFooter />}
+                />
+              )}
             </div>
           </div>
 

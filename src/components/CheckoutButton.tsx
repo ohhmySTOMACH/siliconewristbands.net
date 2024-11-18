@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useCartContext } from "merchi_cart";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 interface NavigateButtonProps {
   href: string;
@@ -11,8 +10,7 @@ interface NavigateButtonProps {
 const CheckoutButton: React.FC<NavigateButtonProps> = ({ href, children }) => {
   const router = useRouter();
 
-  const { isCartModalOpen, toggleCartModal, setIsCartModalOpen, onClickClose } =
-    useCartContext();
+  const { isCartModalOpen, toggleCartModal, cart } = useCartContext();
 
   const handleClick = () => {
     console.log("Log-isCartModalOpen:", isCartModalOpen);
@@ -21,13 +19,18 @@ const CheckoutButton: React.FC<NavigateButtonProps> = ({ href, children }) => {
     router.push(href);
   };
 
+  const cartItems = cart.cartItems ? cart.cartItems : [];
+  const hasItems = cartItems.length > 0;
+
   return (
-    <button
-      onClick={handleClick}
-      className="checkout-button p-2 cursor-pointer"
-    >
-      {children}
-    </button>
+    (hasItems && (
+      <button
+        onClick={handleClick}
+        className="checkout-button p-2 cursor-pointer"
+      >
+        {children}
+      </button>
+    )) || <div />
   );
 };
 
