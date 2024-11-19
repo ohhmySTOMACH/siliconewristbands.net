@@ -101,7 +101,7 @@ function PublicProductWithMerchiCheckout({
               <ProductInformation product={product} />
             )}
           </div>
-          <div className="flex flex-col p-4 gap-y-5 flex-1 w-auto text-lg">
+          <div className="flex flex-col p-0 sm:p-4 gap-y-5 flex-1 w-auto text-lg">
             <MerchiProductForm
               allowAddToCart={true}
               apiUrl={`${BACKEND_URI}v6/`}

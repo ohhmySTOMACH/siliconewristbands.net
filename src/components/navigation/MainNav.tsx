@@ -24,7 +24,7 @@ export default function MainNav({ pathname }: Props) {
 
   return (
     <nav className="w-full md:w-auto">
-      <ul className="w-full flex flex-col pl-0 md:flex-row list-none m-0">
+      <ul className="w-full flex flex-col pl-0 md:flex-row md:gap-4 list-none m-0">
         <li className="w-full md:flex md:items-center">
           <a
             href="/"

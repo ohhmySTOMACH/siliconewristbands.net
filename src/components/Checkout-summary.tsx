@@ -15,7 +15,6 @@ export function CheckoutComponents(): JSX.Element {
   const {
     activeTabIndex,
     cart,
-    domainId,
     fetchingShipmentGroups,
     loadingTotals,
     setActiveTabIndex,
@@ -28,6 +27,8 @@ export function CheckoutComponents(): JSX.Element {
   const [activePanel, setActivePanel] = useState("shipping");
 
   const { refetchCart } = useCartContext();
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const toggleCart = () => {
     setIsOpen((prevIsOpen) => {
@@ -54,6 +55,15 @@ export function CheckoutComponents(): JSX.Element {
     setActiveTabIndex(utilities.tabIdShipment);
     setActivePanel("shipping");
   };
+
+  useEffect(() => {
+    if (shipmentGroups) {
+      const anySelected = shipmentGroups.some(
+        (group: any) => group.selectedQuote && group.selectedQuote.id
+      );
+      setIsButtonDisabled(!anySelected);
+    }
+  }, [shipmentGroups]);
 
   return (
     <>
@@ -158,9 +168,9 @@ export function CheckoutComponents(): JSX.Element {
               } w-full`}
             >
               <panels.PanelCartShipment />
-              {/* Everytime on this page should recheck the form validation */}
+              {/* TODO: If no shipment group checked, disable the button */}
               <buttons.Button
-                disabled={loadingTotals}
+                disabled={isButtonDisabled || loadingTotals}
                 className="checkout-tab-button mt-4 px-4 py-2"
                 form={utilities.shipmentFormId}
                 type="submit"

@@ -6,7 +6,6 @@ export default function Page() {
   return (
     <main className="main">
       <CheckoutSummary />
-      {/* <Cart /> */}
     </main>
   );
 }

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ProductTile({ product }: Props) {
-  console.log(product, "what here");
+  // console.log(product, "what here");
 
   // if no feature image, use the first image in images
   if (!product.featureImage) {

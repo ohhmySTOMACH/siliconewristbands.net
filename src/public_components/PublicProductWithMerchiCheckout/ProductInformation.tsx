@@ -24,57 +24,6 @@ import {
   TabPane,
 } from "reactstrap";
 
-// const LoadingIcon = () => <FontAwesomeIcon icon={faCircleNotch} spin />;
-
-// interface PropsFileListItem {
-//   file: any;
-//   disabled?: boolean;
-//   doDelete?: () => void;
-//   loading?: boolean;
-// }
-
-// function FileListItem({
-//   file,
-//   disabled,
-//   doDelete,
-//   loading,
-// }: PropsFileListItem) {
-//   return (
-//     <li className="merchi-embed-form_information-container-list-group-item no-z-index-hover">
-//       <div className="d-flex align-items-center">
-//         <span>{file.name}</span>
-//         {!disabled && (
-//           <div className="ml-auto">
-//             <Button
-//               color="secondary"
-//               download={true}
-//               href={file.downloadUrl}
-//               size="sm"
-//             >
-//               <FontAwesomeIcon icon={faDownload} />
-//             </Button>
-//             {doDelete && (
-//               <Button
-//                 className="ml-2"
-//                 color="danger"
-//                 onClick={doDelete}
-//                 disabled={Boolean(loading)}
-//                 size="sm"
-//               >
-//                 {loading ? (
-//                   <LoadingIcon />
-//                 ) : (
-//                   <FontAwesomeIcon icon={faTrashAlt} />
-//                 )}
-//               </Button>
-//             )}
-//           </div>
-//         )}
-//       </div>
-//     </li>
-//   );
-// }
-
 function ProcedureIcon({ icon }: any) {
   return (
     <span className="m-r-10 pull-left">
@@ -195,7 +144,7 @@ function ProductInformationSections(props: any) {
   const { product } = props;
 
   return (
-    <ul>
+    <ul className="pl-2 sm:pl-8">
       <ProductAllowGroupBuy product={product} />
       <ProductInventoryCanBeChained product={product} />
       <ProductNormalDelivery product={product} />
@@ -214,21 +163,6 @@ function ProductDescription({ description }: any) {
     </div>
   );
 }
-
-// interface ProductPublicFilesProps {
-//   publicFiles: Array<any>;
-// }
-
-// function ProductPublicFiles(props: ProductPublicFilesProps) {
-//   const { publicFiles } = props;
-//   return (
-//     <ListGroup>
-//       {publicFiles.map((f: any, i: number) => (
-//         <FileListItem key={`${i}-publicfile`} file={f} />
-//       ))}
-//     </ListGroup>
-//   );
-// }
 
 function Item({ activeTab, name, toggle, value }: any) {
   const isActive = activeTab === value;

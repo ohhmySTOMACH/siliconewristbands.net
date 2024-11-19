@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../../public/images/silicone_wristband_logo.jpg";
 import { FiMenu, FiX } from "react-icons/fi";
 import MainNav from "./MainNav";
@@ -15,6 +15,68 @@ import { usePathname } from "next/navigation";
 function HeaderNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentPath = usePathname();
+
+  // useEffect(() => {
+  //   const handleClick = () => {
+  //     console.log("Cart button clicked!");
+
+  //     const observer = new MutationObserver((mutationsList, observer) => {
+  //       const modalDialog = document.querySelector(".modal-dialog");
+
+  //       const tabPane = document.querySelector(
+  //         ".modal-dialog .modal-content .merchi-tab-pane"
+  //       );
+
+  //       const editCartTabPanel = document.querySelector(
+  //         ".modal-content .merchi-tab-pane .merchi-tab-panel:nth-of-type(2)"
+  //       );
+
+  //       const cartSummaryTabPanel = document.querySelector(
+  //         ".modal-content .merchi-tab-pane .merchi-tab-panel:nth-of-type(3)"
+  //       );
+
+  //       console.log("Log-modalDialog:", modalDialog);
+  //       console.log("Log-tabPane", tabPane);
+  //       console.log("Log-secondTabPanel:", editCartTabPanel);
+  //       console.log("Log-thirdTabPanel:", cartSummaryTabPanel);
+
+  //       if (modalDialog && editCartTabPanel && cartSummaryTabPanel) {
+  //         const editButton = cartSummaryTabPanel.querySelector(
+  //           "div table tbody tr td button:nth-of-type(1)"
+  //         );
+
+  //         if (editButton) {
+  //           console.log("Log-editButton:", editButton);
+
+  //           // Add event listener to edit button
+  //           editButton.addEventListener("click", () => {
+  //             console.log("Log-Edit button clicked!");
+  //             (modalDialog as HTMLElement).style.width = "90%";
+  //             (modalDialog as HTMLElement).style.maxWidth = "90%";
+  //           });
+  //         } else {
+  //           console.error("Edit button not found!");
+  //         }
+  //       }
+  //       observer.disconnect();
+  //     });
+  //     observer.observe(document.body, { childList: true, subtree: true });
+  //   };
+
+  //   const cartButton = document.querySelector(".btn.cart-icon-button-class");
+
+  //   if (!cartButton) {
+  //     console.error("Cart button not found!");
+  //     return;
+  //   }
+
+  //   cartButton.addEventListener("click", handleClick);
+
+  //   // Cleanup listener on unmount
+  //   return () => {
+  //     cartButton.removeEventListener("click", handleClick);
+  //   };
+  // }, []);
 
   return (
     <div>
