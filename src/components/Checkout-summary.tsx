@@ -67,12 +67,12 @@ export function CheckoutComponents(): JSX.Element {
 
   return (
     <>
-      <div className="pt flex flex-col sm:flex-row gap-4 w-full">
+      <div className="pt flex flex-col sm:flex-row gap-4 md:!gap-0 w-full">
         <div className="cart-summary flex flex-col w-full h-full max-w-md">
           <div>
             <button
               onClick={toggleCart}
-              className="border-0 w-full flex items-center justify-between p-4 whitespace-nowrap"
+              className="bg-bg border-0 w-full flex items-center justify-between p-4 whitespace-nowrap h-[68px]"
             >
               <div className="flex items-center gap-2">
                 <span className="font-medium text-text-blue">
@@ -130,8 +130,8 @@ export function CheckoutComponents(): JSX.Element {
             </div>
           </div>
         </div>
-        <div className="shipping-contact-payment w-full p-4">
-          <div className="flex flex-row gap-1 items-center">
+        <div className="shipping-contact-payment w-full">
+          <div className="bg-bg flex flex-row gap-1 items-center h-[68px]">
             <button
               className={`bg-transparent border-0 px-2 py-2 font-medium text-sm
           ${activePanel === "shipping" ? "text-text-blue" : "bg-gray-200"}`}
@@ -161,7 +161,7 @@ export function CheckoutComponents(): JSX.Element {
               Contact information
             </button>
           </div>
-          <div className="checkout-info flex flex-col w-full mt-4">
+          <div className="checkout-info flex flex-col w-full mt-4 px-2 sm:px-4">
             <div
               className={`flex-col ${
                 activePanel === "shipping" ? "flex" : "hidden"
