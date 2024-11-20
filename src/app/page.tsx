@@ -47,15 +47,15 @@ export default async function Home() {
               GREAT! Free online proofs and fast 12-day turnaround. With over 10
               years experience, we guarantee your satisfaction!
             </p>
-            <div className="mt-4 mb-4 flex">
+            <div className="mt-4 mb-4 flex gap-4 flex-col lg:flex-row">
               <a
-                className="btn-blue text-white py-2 px-4 rounded-xl mr-2 shadow-custom"
+                className="btn-blue btn-xl text-white p-4 rounded-xl mr-2 shadow-custom"
                 href="/faq"
               >
                 Visit FAQ
               </a>
               <a
-                className="btn-orange text-white py-2 px-4 rounded-xl shadow-custom"
+                className="btn-orange btn-xl text-white p-4 rounded-xl mr-2 shadow-custom"
                 href="/products"
               >
                 Order Now

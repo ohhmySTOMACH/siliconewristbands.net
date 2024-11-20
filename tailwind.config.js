@@ -10,6 +10,9 @@ module.exports = {
         "btn-blue": "#5ba4e6",
         "btn-blue-hover": "#2c6080",
       },
+      screens: {
+        "larger-425": "425px",
+      },
     },
   },
   plugins: [],

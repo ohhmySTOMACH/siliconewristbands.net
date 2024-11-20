@@ -163,9 +163,9 @@ a {
 
 .btn-xl {
   font-size: 22px;
-  padding: 22px 30px;
   line-height: normal;
-  border-radius: 10px;
+  vertical-align: middle;
+  width: fit-content;
 }
 
 .btn-blue {
