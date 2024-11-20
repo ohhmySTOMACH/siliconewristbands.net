@@ -67,7 +67,7 @@ export function CheckoutComponents(): JSX.Element {
 
   return (
     <>
-      <div className="pt flex flex-col sm:flex-row gap-4 md:!gap-0 w-full">
+      <div className="container px-0 flex flex-col sm:flex-row gap-4 md:!gap-0 w-full">
         <div className="cart-summary flex flex-col w-full h-full max-w-md">
           <div>
             <button
@@ -121,7 +121,7 @@ export function CheckoutComponents(): JSX.Element {
       md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
             `}
           >
-            <div className="p-4 bg-transparent">
+            <div className="py-4 bg-transparent">
               <div className="space-y-4">
                 <panels.PanelCartItems />
                 <panels.PanelEditCartItem cart={cart} />

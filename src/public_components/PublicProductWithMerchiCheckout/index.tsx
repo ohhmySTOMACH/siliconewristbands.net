@@ -93,7 +93,7 @@ function PublicProductWithMerchiCheckout({
 
   return (
     <>
-      <div className="container pt-12 pb-12 px-5 w-auto">
+      <div className="container pt-12 pb-12 larger-425:px-5 w-auto">
         <div className="p-2 sm:!p-8 flex flex-col md:flex-row flex-wrap justify-center gap-x-5 rounded-lg border border-neutral-800 bg-background">
           <div className="flex flex-1 flex-col flex-wrap md:w-1/2 w-auto gap-y-10">
             {!hidePreview && product.id && <ProductImages product={product} />}

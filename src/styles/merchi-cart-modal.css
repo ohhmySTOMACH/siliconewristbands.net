@@ -241,6 +241,14 @@ th.merchi-cart-item-table-head-right {
   }
 }
 
+.table-responsive strong {
+  font-size: 0.8rem;
+}
+
+.table > :not(caption) > * > * {
+  background-color: transparent;
+}
+
 .merchi-cart-body form {
   display: flex;
   flex-direction: column;
@@ -280,10 +288,6 @@ th.merchi-cart-item-table-head-right {
     gap: 1rem;
   }
 }
-
-/* .merchi-cart-footer {
-  display: none;
-} */
 
 .cart-summary.merchi-cart-footer {
   display: flex;
@@ -338,4 +342,8 @@ th.merchi-cart-item-table-head-right {
 
 span.text-muted {
   margin-left: 1rem !important;
+}
+
+.merchi-cart-total-list-container ul.list-group {
+  width: 100%;
 }
