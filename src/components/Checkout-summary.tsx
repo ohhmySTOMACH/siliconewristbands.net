@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import {
   useCartContext,
   CartProvider,
+  CartTotals,
   panels,
   utilities,
   buttons,
@@ -126,6 +127,7 @@ export function CheckoutComponents(): JSX.Element {
                 <panels.PanelCartItems />
                 <panels.PanelEditCartItem cart={cart} />
                 <panels.PanelClearCart />
+                <CartTotals />
               </div>
             </div>
           </div>
@@ -156,14 +158,14 @@ export function CheckoutComponents(): JSX.Element {
             <button
               className={`bg-transparent border-0 px-2 py-2 font-medium text-sm whitespace-nowrap
           ${activePanel === "payment" ? "text-text-blue" : "bg-gray-200"}`}
-              onClick={() => setActivePanel("payment")}
+              // onClick={() => setActivePanel("payment")}
             >
               Contact information
             </button>
           </div>
           <div className="checkout-info flex flex-col w-full mt-4 px-2 sm:px-4">
             <div
-              className={`flex-col ${
+              className={`rounded border border-gray-700 flex-col ${
                 activePanel === "shipping" ? "flex" : "hidden"
               } w-full`}
             >
@@ -171,7 +173,7 @@ export function CheckoutComponents(): JSX.Element {
               {/* TODO: If no shipment group checked, disable the button */}
               <buttons.Button
                 disabled={isButtonDisabled || loadingTotals}
-                className="checkout-tab-button mt-4 px-4 py-2"
+                className="checkout-tab-button m-4 px-4 py-2"
                 form={utilities.shipmentFormId}
                 type="submit"
               >
@@ -184,13 +186,13 @@ export function CheckoutComponents(): JSX.Element {
 
             {/* Display Payment panel if active */}
             <div
-              className={`flex-col items-center ${
+              className={`rounded border border-gray-700 flex-col items-center ${
                 activePanel === "payment" ? "flex" : "hidden"
               } w-full`}
             >
               <panels.PanelClientCheckout />
               <div
-                className="flex items-center mt-4 text-text-blue cursor-pointer hover:text-[#0079aa]"
+                className="flex items-center my-4 text-text-blue cursor-pointer hover:text-[#0079aa]"
                 onClick={handleBackClick}
               >
                 <svg

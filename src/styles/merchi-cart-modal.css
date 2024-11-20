@@ -205,6 +205,10 @@ div[style*="width: 700px;"] {
   display: none;
 }
 
+.cart-summary .merchi-cart-total-container {
+  padding: 1rem;
+}
+
 .merchi-tab-pane {
   display: flex;
   flex-direction: column;
