@@ -26,7 +26,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.8",
     "immutability-helper": "^3.1.1",
-    "merchi_cart": "1.0.0-test-t",
+    "merchi_cart": "1.0.0-test-u",
     "merchi_checkout": "1.0.10",
     "merchi_product_form": "1.0.18",
     "merchi_sdk_js": "^0.0.31",

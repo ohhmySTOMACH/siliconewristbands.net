@@ -38,7 +38,7 @@ export default async function Page(props: any) {
   return (
     <main className="main">
       <Banner>
-        <h1 className="text-2xl">Order Now</h1>
+        <h1 className="pl-8 text-2xl">Products</h1>
       </Banner>
       <PublicProductWithMerchiCheckout productJson={product} />
     </main>

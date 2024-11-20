@@ -65,7 +65,7 @@ a {
 }
 
 .component_dark {
-  background-color: #2874A6;
+  background-color: #2874a6;
   color: white;
   padding-top: 20px;
   padding-left: 10%;
@@ -98,7 +98,6 @@ a {
   text-align: center;
 }
 
-
 .boxed {
   border-radius: 5px;
   box-shadow: 2px 2px 10px grey;
@@ -108,7 +107,13 @@ a {
 }
 
 .banner {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #4ac5fa), color-stop(1, #009bde));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #4ac5fa),
+    color-stop(1, #009bde)
+  );
   background-image: -o-linear-gradient(bottom, #4ac5fa 0%, #009bde 100%);
   background-image: -moz-linear-gradient(bottom, #4ac5fa 0%, #009bde 100%);
   background-image: -webkit-linear-gradient(bottom, #4ac5fa 0%, #009bde 100%);
@@ -134,7 +139,7 @@ a {
   font-size: 2.3em;
   line-height: 3rem;
   color: white;
-  text-shadow: 2px 2px 0px #0A8FD5;
+  text-shadow: 2px 2px 0px #0a8fd5;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -146,7 +151,7 @@ a {
   font-size: 21px;
   font-weight: 400;
   text-rendering: optimizeLegibility;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   padding-top: 20px;
 }
 
@@ -172,7 +177,8 @@ a {
   cursor: pointer;
   font-weight: 900;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -187,7 +193,8 @@ a {
   cursor: pointer;
   font-weight: 900;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -205,7 +212,8 @@ a {
   cursor: pointer;
   font-weight: 900;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -220,7 +228,8 @@ a {
   cursor: pointer;
   font-weight: 900;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
   text-align: center;
   display: inline-block;
   -webkit-font-smoothing: antialiased;
@@ -234,7 +243,7 @@ a {
   /* Allow children to wrap onto new lines */
 }
 
-.products-grid>* {
+.products-grid > * {
   flex: 0 0 25%;
   /* Each child takes up 25% of the width */
   box-sizing: border-box;
@@ -264,11 +273,19 @@ a {
   background: white;
   border: 1px solid #bebebe;
   padding: 25px 30px 30px 30px;
-  margin: 5rem 0px;
+  margin: 2rem 0px;
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 768px) {
+    margin-top: 1rem;
+  }
+}
+
+#list-margin {
+  padding-left: 0rem;
 }
 
 .footer-sc {
@@ -281,7 +298,7 @@ a {
 .footer-sc a {
   font-weight: 700;
   text-decoration: none;
-  color: #009bde
+  color: #009bde;
 }
 
 .cc-icons-container {

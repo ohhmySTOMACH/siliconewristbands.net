@@ -219,7 +219,10 @@ export function CheckoutComponents(): JSX.Element {
 
 export default function CheckoutSummary(): JSX.Element {
   return (
-    <CartProvider domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}>
+    <CartProvider
+      showCartItemInfo={false}
+      domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+    >
       <CheckoutComponents />
     </CartProvider>
   );

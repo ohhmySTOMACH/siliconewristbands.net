@@ -39,14 +39,14 @@ export default function MainNav({ pathname }: Props) {
         </li>
         <li className="w-full md:flex md:items-center">
           <a
-            href="/order"
+            href="/products"
             className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black whitespace-nowrap ${
-              navItemIsActive("/order")
+              navItemIsActive("/products")
                 ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
-            Order Now
+            Products
           </a>
         </li>
         <li className="w-full md:flex md:items-center">

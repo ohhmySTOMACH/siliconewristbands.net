@@ -1,8 +1,8 @@
 // app/page.tsx
 "use server";
-import MERCHI from "../utils/merchi";
-import Banner from "../components/Banner";
-import { useSSR } from "../utils/merchi-ssr";
+import MERCHI from "@/utils/merchi";
+import Banner from "@/components/Banner";
+import { useSSR } from "@/utils/merchi-ssr";
 import ProductTile from "@/components/ProductTile";
 
 async function getProducts() {
@@ -39,7 +39,7 @@ export default async function Home() {
   return (
     <div>
       <Banner>
-        <div className="flex flex-col md:flex-row">
+        <div className="container flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 p-4">
             <h1 className="text-2xl font-bold">We do Silicone Wristbands</h1>
             <p className="mt-2">
@@ -56,7 +56,7 @@ export default async function Home() {
               </a>
               <a
                 className="btn-orange text-white py-2 px-4 rounded-xl shadow-custom"
-                href="/order"
+                href="/products"
               >
                 Order Now
               </a>
@@ -73,18 +73,8 @@ export default async function Home() {
           </div>
         </div>
       </Banner>
-      <div className="px-4 sm:px-16">
-        <h2 className="text-text-blue text-2xl font-semibold mt-4">
-          Select a Wristband from the Choices Below
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-          {products &&
-            products.map((product: any) => (
-              <ProductTile key={`product-${product.id}`} product={product} />
-            ))}
-        </div>
-      </div>
-      <div className="w-full px-2 sm:px-16 my-8">
+      <ProductTile products={products} />
+      <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">
           <div className="md:w-1/2">
             <img

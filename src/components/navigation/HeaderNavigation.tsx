@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import logo from "../../../public/images/silicone_wristband_logo.jpg";
+import logo from "../../../public/images/SiliconeWristbandLogo.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import MainNav from "./MainNav";
 import { MerchiCartModal } from "merchi_cart";
@@ -79,8 +79,8 @@ function HeaderNavigation() {
   // }, []);
 
   return (
-    <div>
-      <nav className="px-4 pb-4 sm:!pb-0 sm:px-20 bg-white flex flex-col items-start md:px-32 md:flex-row md:items-center md:justify-center md:gap-8">
+    <div className="container">
+      <nav className="pr-4 pb-4 sm:!pb-0 bg-transparent flex flex-col items-start md:flex-row md:items-center md:justify-center md:gap-8">
         <div className="flex flex-row justify-between w-full md:w-auto">
           <a href="/" className="flex-shrink-0">
             <Image
@@ -128,6 +128,7 @@ function HeaderNavigation() {
                   domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
                   loading={true}
                   footer={<CheckoutFooter />}
+                  showCartItemInfo={false}
                 />
               )}
             </div>

@@ -103,7 +103,7 @@ const MainContent = () => {
               <td className="border-solid border-gray-300 px-4 py-2">
                 Silicone (All Products)
               </td>
-              <td className="border-solid border-gray-300 px-4 py-2">
+              <td className="border-solid border-l-[1px] border-gray-300 px-4 py-2">
                 7-12 days
               </td>
             </tr>
@@ -119,10 +119,12 @@ const MainContent = () => {
         <table className="min-w-full table-auto border-collapse border border-gray-300 mt-2">
           <tbody>
             <tr className="bg-gray-100">
-              <td className="border-solid border-gray-300 px-4 py-2">
+              <td className="w-1/2 border-solid border-gray-300 px-4 py-2">
                 Silicone (All Products)
               </td>
-              <td className="border-solid border-gray-300 px-4 py-2">*100</td>
+              <td className="border-solid border-l-[1px] border-gray-300 px-4 py-2">
+                *100
+              </td>
             </tr>
           </tbody>
         </table>
