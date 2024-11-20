@@ -68,9 +68,9 @@ export function CheckoutComponents(): JSX.Element {
 
   return (
     <>
-      <div className="container px-0 flex flex-col sm:flex-row gap-4 md:!gap-0 w-full">
-        <div className="cart-summary flex flex-col w-full h-full max-w-md">
-          <div>
+      <div className="container px-0 flex flex-col sm:flex-row gap-4 sm:!gap-0 w-full">
+        <div className="cart-summary flex flex-col w-full h-full">
+          <div className="w-full">
             <button
               onClick={toggleCart}
               className="bg-bg border-0 w-full flex items-center justify-between p-4 whitespace-nowrap h-[68px]"
@@ -116,14 +116,13 @@ export function CheckoutComponents(): JSX.Element {
             </button>
           </div>
           <div
-            className={`
-              transition-all duration-300 ease-in-out
-      ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
-      md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
+            className={`rounded border border-gray-700 m-2 px-2 transition-all duration-300 ease-in-out
+              ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+              md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
             `}
           >
             <div className="py-4 bg-transparent">
-              <div className="space-y-4">
+              <div className="space-y-4 flex flex-col items-center">
                 <panels.PanelCartItems />
                 <panels.PanelEditCartItem cart={cart} />
                 <panels.PanelClearCart />

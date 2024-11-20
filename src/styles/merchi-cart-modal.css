@@ -64,6 +64,7 @@ button.btn.cart-icon-button-class {
 
 .modal {
   z-index: 1050;
+
   @media screen and (max-width: 425px) {
     backdrop-filter: blur(5px);
   }
@@ -227,6 +228,7 @@ th.merchi-cart-item-table-head-right {
 
 .merchi-cart-total-container {
   justify-content: center;
+
   @media (min-width: 768px) {
     font-size: large;
   }
@@ -235,6 +237,7 @@ th.merchi-cart-item-table-head-right {
 .table-responsive {
   padding-left: 1rem;
   padding-right: 1rem;
+
   @media (max-width: 375px) {
     font-size: 0.6rem;
   }
@@ -249,7 +252,7 @@ th.merchi-cart-item-table-head-right {
   font-size: 0.8rem;
 }
 
-.table > :not(caption) > * > * {
+.table> :not(caption)>*>* {
   background-color: transparent;
 }
 
@@ -263,6 +266,7 @@ th.merchi-cart-item-table-head-right {
 .merchi-cart-body {
   padding-top: 1 rem !important;
   padding-bottom: 0 !important;
+
   @media screen and (max-width: 425px) {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -328,6 +332,12 @@ th.merchi-cart-item-table-head-right {
   padding-left: 0 !important;
   padding-right: 0 !important;
   padding-top: 0 !important;
+}
+
+.cart-summary .merchi-tab-panel {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 345px;
 }
 
 .merchi-cart-body {
