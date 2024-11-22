@@ -1,33 +1,91 @@
 "use client";
-import React, { useState } from "react";
-import logo from "../../../public/images/logo.png";
+import React, { useState, useEffect } from "react";
+import logo from "../../../public/images/SiliconeWristbandLogo.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import MainNav from "./MainNav";
-import { MerchiCartModal } from "merchi_cart/src";
+import { MerchiCartModal, useCartContext } from "merchi_cart";
 import "@/styles/merchi-cart-modal.css";
 import "@/styles/customized-product-form.css";
 import Image from "next/image";
-import { PropsCart } from "merchi_cart/src/CartProvider";
+import CheckoutFooter from "@/components/CheckoutButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 
-interface Props extends PropsCart {
-  cartButtonWrappedInContainer?: boolean;
-  cartIconButtonClass?: string;
-  currentUser?: any;
-  customSuccessMessage?: string;
-  domainId?: number;
-  listContainerClass?: string;
-  listItemClass?: string;
-  showOpenCartButton?: boolean;
-  size?: string;
-  storeId?: number;
-}
-
-function HeaderNavigation(props: Props) {
+function HeaderNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentPath = usePathname();
+
+  const { activeTabIndex } = useCartContext();
+  useEffect(() => {
+    console.log("Log-activeTabIndex:", activeTabIndex);
+  }, [activeTabIndex]);
+
+  // useEffect(() => {
+  //   const handleClick = () => {
+  //     console.log("Cart button clicked!");
+
+  //     const observer = new MutationObserver((mutationsList, observer) => {
+  //       const modalDialog = document.querySelector(".modal-dialog");
+
+  //       const tabPane = document.querySelector(
+  //         ".modal-dialog .modal-content .merchi-tab-pane"
+  //       );
+
+  //       const editCartTabPanel = document.querySelector(
+  //         ".modal-content .merchi-tab-pane .merchi-tab-panel:nth-of-type(2)"
+  //       );
+
+  //       const cartSummaryTabPanel = document.querySelector(
+  //         ".modal-content .merchi-tab-pane .merchi-tab-panel:nth-of-type(3)"
+  //       );
+
+  //       console.log("Log-modalDialog:", modalDialog);
+  //       console.log("Log-tabPane", tabPane);
+  //       console.log("Log-secondTabPanel:", editCartTabPanel);
+  //       console.log("Log-thirdTabPanel:", cartSummaryTabPanel);
+
+  //       if (modalDialog && editCartTabPanel && cartSummaryTabPanel) {
+  //         const editButton = cartSummaryTabPanel.querySelector(
+  //           "div table tbody tr td button:nth-of-type(1)"
+  //         );
+
+  //         if (editButton) {
+  //           console.log("Log-editButton:", editButton);
+
+  //           // Add event listener to edit button
+  //           editButton.addEventListener("click", () => {
+  //             console.log("Log-Edit button clicked!");
+  //             (modalDialog as HTMLElement).style.width = "90%";
+  //             (modalDialog as HTMLElement).style.maxWidth = "90%";
+  //           });
+  //         } else {
+  //           console.error("Edit button not found!");
+  //         }
+  //       }
+  //       observer.disconnect();
+  //     });
+  //     observer.observe(document.body, { childList: true, subtree: true });
+  //   };
+
+  //   const cartButton = document.querySelector(".btn.cart-icon-button-class");
+
+  //   if (!cartButton) {
+  //     console.error("Cart button not found!");
+  //     return;
+  //   }
+
+  //   cartButton.addEventListener("click", handleClick);
+
+  //   // Cleanup listener on unmount
+  //   return () => {
+  //     cartButton.removeEventListener("click", handleClick);
+  //   };
+  // }, []);
 
   return (
-    <div>
-      <nav className="px-4 sm:px-20 bg-gray-200 flex flex-col items-start md:px-32 md:flex-row md:items-center md:justify-center md:gap-8">
+    <div className="container">
+      <nav className="pr-4 pb-4 sm:!pb-0 bg-transparent flex flex-col items-start md:flex-row md:items-center md:justify-center md:gap-8">
         <div className="flex flex-row justify-between w-full md:w-auto">
           <a href="/" className="flex-shrink-0">
             <Image
@@ -41,44 +99,50 @@ function HeaderNavigation(props: Props) {
 
           {/* Burger Menu Toggle Button */}
           <button
-            className="md:hidden ml-4 mt-2 text-gray-300 focus:outline-none border-gray-300 rounded-sm"
+            className={`md:hidden ml-4 mt-2 focus:outline-none ${
+              isMenuOpen
+                ? "text-white bg-banner-blue"
+                : " text-text-blue bg-white"
+            } border rounded-md`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            <FiMenu size={24} />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 items-start md:items-end xl:flex-row xl:items-center w-full">
-          {/* Telephone */}
-          <div className="flex flex-row w-full justify-between items-center xl:order-last mt-2 xl:!mt-0">
+        <div className="flex flex-col gap-4 items-start md:items-center md:flex-row w-full">
+          <div className="flex flex-row w-full justify-between items-center md:order-last mt-2 md:!mt-0">
+            {/* Telephone */}
             <a
               href="tel:+61390014888"
               className="flex flex-row items-center text-lg text-text-blue font-bold tracking-wide no-underline whitespace-nowrap"
             >
               <div className="flex items-center justify-center p-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  color="#009bde"
-                  fill="white"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="#009bde"
-                  className="size-6"
-                >
-                  <rect width="24" height="24" rx="4" fill="#009bde" />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-                  />
-                </svg>
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  style={{
+                    borderRadius: "4px",
+                    fontSize: "15px",
+                  }}
+                />
               </div>
-              <div className="ml-1 flex">
+              <div className="ml-1 md:hidden lg:flex">
                 <p className="text-xl font-medium m-0">(03) 9001 4888</p>
               </div>
             </a>
+
+            {/* Cart Button */}
             <div className="nav-cart-button">
-              <MerchiCartModal {...props} domainId={206} />
+              {currentPath !== "/checkouts" &&
+                currentPath !== "/checkouts/checkout-success" && (
+                  <MerchiCartModal
+                    cartButtonWrappedInContainer={true}
+                    domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+                    loading={true}
+                    footer={<CheckoutFooter />}
+                    showCartItemInfo={false}
+                  />
+                )}
             </div>
           </div>
 
@@ -86,7 +150,7 @@ function HeaderNavigation(props: Props) {
           <div
             className={`${
               isMenuOpen ? "flex" : "hidden"
-            } w-full md:flex md:items-center md:space-x-4 order-3 xl:order-2`}
+            } w-full md:flex md:items-center md:space-x-4 order-3 md:order-2`}
           >
             <MainNav />
           </div>

@@ -24,13 +24,13 @@ export default function MainNav({ pathname }: Props) {
 
   return (
     <nav className="w-full md:w-auto">
-      <ul className="w-full flex flex-col pl-0 md:flex-row list-none m-0">
+      <ul className="w-full flex flex-col pl-0 md:flex-row md:gap-2 xl:gap-4 list-none m-0">
         <li className="w-full md:flex md:items-center">
           <a
             href="/"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
@@ -39,22 +39,22 @@ export default function MainNav({ pathname }: Props) {
         </li>
         <li className="w-full md:flex md:items-center">
           <a
-            href="/order"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black whitespace-nowrap ${
-              navItemIsActive("/order")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+            href="/products"
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black whitespace-nowrap ${
+              navItemIsActive("/products")
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
-            Order Now
+            Products
           </a>
         </li>
         <li className="w-full md:flex md:items-center">
           <a
             href="/about"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/about")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6"
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6"
                 : ""
             }`}
           >
@@ -76,9 +76,9 @@ export default function MainNav({ pathname }: Props) {
         <li className="w-full md:flex md:items-center">
           <a
             href="/contact"
-            className={`text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
+            className={`block text-text-blue font-bold text-base p-2 md:p-4 hover:text-black ${
               navItemIsActive("/contact")
-                ? "text-white bg-banner-blue border-none shadow-none p-0 md:!p-6 "
+                ? "text-white bg-banner-blue border-none shadow-none p-2 w-full md:!p-6 "
                 : ""
             }`}
           >

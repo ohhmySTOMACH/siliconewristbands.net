@@ -1,78 +1,89 @@
 "use client";
 import { useState, useEffect } from "react";
 import {
-  PanelCartItems,
-  PanelCartShipment,
-  PanelClearCart,
-  PanelClientCheckout,
-  PanelEditCartItem,
-} from "merchi_cart/src/panels";
-import { Button } from "merchi_cart/src/buttons";
-// import { actionFetchTheme, initMerchiCart } from "merchi_cart/src/store";
-import CartProvider, {
-  PropsCart,
   useCartContext,
-} from "merchi_cart/src/CartProvider";
-import { shipmentFormId } from "merchi_cart/src/utilities/shipment";
-import { tabIdShipment } from "merchi_cart/src/utilities/tabs";
+  CartProvider,
+  CartTotals,
+  panels,
+  utilities,
+  buttons,
+} from "merchi_cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import "@/styles/merchi-cart-modal.css";
+import { useRouter } from "next/navigation";
 
 export function CheckoutComponents(): JSX.Element {
   const {
     activeTabIndex,
     cart,
-    domainId,
-    // includeTheme,
-    // initialiseCart,
-    setActiveTabIndex,
+    fetchingShipmentGroups,
     loadingTotals,
+    setActiveTabIndex,
+    tabs,
   } = useCartContext();
 
-  console.log("Log-loadingTotals:", loadingTotals);
-  console.log("Log-domainId:", domainId);
+  const { shipmentGroups } = cart;
 
   const [isOpen, setIsOpen] = useState(false);
 
   const [activePanel, setActivePanel] = useState("shipping");
 
+  const { refetchCart } = useCartContext();
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
   const toggleCart = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = !prevIsOpen;
+      refetchCart();
+      return newIsOpen;
+    });
   };
 
-  // useEffect(() => {
-  //   if (initialiseCart && domainId) {
-  //     if (includeTheme) {
-  //       actionFetchTheme(domainId);
-  //     }
-  //     initMerchiCart(domainId);
-  //   }
-  // }, [domainId, includeTheme, initialiseCart]);
+  console.log("Log-fetchingShipmentGroups:", fetchingShipmentGroups);
+  console.log("Log-shipmentGroups length:", shipmentGroups);
 
-  console.log("Log-activeTabIndexId:", activeTabIndex);
+  const router = useRouter();
+  const currentTabIndex = tabs.findIndex(
+    (t: any) => t.tabId === activeTabIndex
+  );
+  const activeTabValues = tabs[currentTabIndex];
 
   useEffect(() => {
-    if (activeTabIndex === 2) {
+    console.log("Log-activeTabId:", activeTabValues.tabId);
+
+    if (activeTabValues.tabId === utilities.tabIdCheckout) {
       setActivePanel("payment");
+    } else if (activeTabValues.tabId === utilities.tabIdPaymentSuccess) {
+      router.push("/checkouts/checkout-success");
     } else {
       setActivePanel("shipping");
     }
-  }, [activeTabIndex]);
+  }, [activeTabValues]);
 
   const handleBackClick = () => {
-    setActiveTabIndex(tabIdShipment);
+    setActiveTabIndex(utilities.tabIdShipment);
     setActivePanel("shipping");
   };
 
+  useEffect(() => {
+    if (shipmentGroups) {
+      const anySelected = shipmentGroups.some(
+        (group: any) => group.selectedQuote && group.selectedQuote.id
+      );
+      setIsButtonDisabled(!anySelected);
+    }
+  }, [shipmentGroups]);
+
   return (
     <>
-      <div className="pt flex flex-col sm:flex-row gap-4 w-full">
-        <div className="cart-summary flex flex-col w-full h-full max-w-md">
-          <div>
+      <div className="container px-0 flex flex-col sm:flex-row gap-4 sm:!gap-0 w-full">
+        <div className="cart-summary flex flex-col w-full h-full">
+          <div className="w-full">
             <button
               onClick={toggleCart}
-              className="border-0 w-full flex items-center justify-between p-4 whitespace-nowrap"
+              className="bg-bg border-0 w-full flex items-center justify-between p-4 whitespace-nowrap h-[68px]"
             >
               <div className="flex items-center gap-2">
                 <span className="font-medium text-text-blue">
@@ -115,23 +126,22 @@ export function CheckoutComponents(): JSX.Element {
             </button>
           </div>
           <div
-            className={`
-              transition-all duration-300 ease-in-out
-      ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
-      md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
+            className={`rounded border border-gray-700 m-2 mt-4 px-2 transition-all duration-300 ease-in-out
+              ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+              md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
             `}
           >
-            <div className="p-4 bg-transparent">
-              <div className="space-y-4">
-                <PanelCartItems />
-                <PanelEditCartItem cart={cart} />
-                <PanelClearCart />
+            <div className="py-4 bg-transparent">
+              <div className="space-y-4 flex flex-col items-center">
+                <panels.PanelCartItems />
+                {/* <panels.PanelEditCartItem cart={cart} /> */}
+                <CartTotals />
               </div>
             </div>
           </div>
         </div>
-        <div className="shipping-contact-payment w-full p-4">
-          <div className="flex flex-row gap-1 items-center">
+        <div className="shipping-contact-payment w-full">
+          <div className="bg-bg flex flex-row gap-1 items-center h-[68px]">
             <button
               className={`bg-transparent border-0 px-2 py-2 font-medium text-sm
           ${activePanel === "shipping" ? "text-text-blue" : "bg-gray-200"}`}
@@ -156,48 +166,40 @@ export function CheckoutComponents(): JSX.Element {
             <button
               className={`bg-transparent border-0 px-2 py-2 font-medium text-sm whitespace-nowrap
           ${activePanel === "payment" ? "text-text-blue" : "bg-gray-200"}`}
-              onClick={() => setActivePanel("payment")}
+              // onClick={() => setActivePanel("payment")}
             >
               Contact information
             </button>
           </div>
-          <div className="checkout-info flex flex-col w-full mt-4">
+          <div className="checkout-info flex flex-col w-full mt-4 px-2 sm:px-4">
             <div
-              className={`flex-col ${
+              className={`rounded border border-gray-700 flex-col ${
                 activePanel === "shipping" ? "flex" : "hidden"
               } w-full`}
             >
-              <PanelCartShipment />
-              {/* <ButtonNextDynamic /> */}
-              {/* Everytime on this page should recheck the form validation */}
-              <Button
-                disabled={loadingTotals}
-                className="checkout-tab-button mt-4 px-4 py-2"
-                form={shipmentFormId}
+              <panels.PanelCartShipment />
+              <buttons.Button
+                disabled={isButtonDisabled || loadingTotals}
+                className="checkout-tab-button m-4 px-4 py-2"
+                form={utilities.shipmentFormId}
                 type="submit"
               >
                 {loadingTotals && <FontAwesomeIcon icon={faCircleNotch} spin />}
                 <span style={{ marginLeft: loadingTotals ? "5px" : "0" }}>
                   {loadingTotals ? "Loading..." : "Continue to Information"}
                 </span>
-              </Button>
+              </buttons.Button>
             </div>
 
             {/* Display Payment panel if active */}
             <div
-              className={`flex-col items-center ${
+              className={`rounded border border-gray-700 flex-col items-center ${
                 activePanel === "payment" ? "flex" : "hidden"
               } w-full`}
             >
-              <PanelClientCheckout />
-              {/* <button
-                onClick={() => setActivePanel("confirmation")}
-                className="checkout-tab-button mt-4 px-4 py-2"
-              >
-                Continue to Payment
-              </button> */}
+              <panels.PanelClientCheckout />
               <div
-                className="flex items-center mt-4 text-text-blue cursor-pointer hover:text-[#0079aa]"
+                className="flex items-center my-4 text-text-blue cursor-pointer hover:text-[#0079aa]"
                 onClick={handleBackClick}
               >
                 <svg
@@ -224,9 +226,12 @@ export function CheckoutComponents(): JSX.Element {
   );
 }
 
-export default function CheckoutSummary(props: PropsCart): JSX.Element {
+export default function CheckoutSummary(): JSX.Element {
   return (
-    <CartProvider {...props} domainId={206}>
+    <CartProvider
+      showCartItemInfo={false}
+      domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+    >
       <CheckoutComponents />
     </CartProvider>
   );

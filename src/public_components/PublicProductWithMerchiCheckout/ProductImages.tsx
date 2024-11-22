@@ -50,12 +50,12 @@ export default function ProductImages({ product }: Props) {
   );
 
   return (
-    <div className="flex flex-col sm:flex-row md:flex-col gap-x-4 h-[400px] sm:h-[500px] items-center">
+    <div className="flex flex-col sm:flex-row md:flex-col gap-x-4 h-[350px] sm:h-[400px] items-center w-full">
       <div className="flex flex-grow w-5/6 justify-center items-center">
         <Zoom>
-          <div className="max-w-[350px] max-h-[300px] ">
+          <div className="max-w-[350px] max-h-[250px] ">
             <img
-              className="w-full h-full max-w-[350px] max-h-[300px] object-contain"
+              className="w-full h-full max-w-[350px] max-h-[250px] object-contain"
               src={previewImgSrc ? previewImgSrc : productNotFoundUrl}
               alt="product images"
             />

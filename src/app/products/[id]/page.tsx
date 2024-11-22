@@ -33,14 +33,17 @@ export default async function Page(props: any) {
   const id = props.params.id;
   const productData = await getProductData(id);
   const product = productData.props.data;
-  // console.log("Log - Current Product: ", product);
+  console.log("Log - Current Product: ", product);
 
   return (
     <main className="main">
       <Banner>
-        <h1 className="text-2xl">Order Now</h1>
+        <h1 className="pl-8 text-2xl">Products</h1>
       </Banner>
-      <PublicProductWithMerchiCheckout productJson={product} />
+      <PublicProductWithMerchiCheckout
+        productJson={product}
+        hideDomainName={true}
+      />
     </main>
   );
 }

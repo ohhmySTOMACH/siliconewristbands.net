@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { doAddCartItem, doToggleCartOpen } from "merchi_cart/src";
+// import { doAddCartItem, doToggleCartOpen } from "merchi_cart/src";
 import { getNextBackendUri } from "../utilities";
 import MerchiProductForm from "merchi_product_form";
 import dynamic from "next/dynamic";
@@ -53,7 +53,6 @@ function PublicProductWithMerchiCheckout({
   redirectAfterSuccessUrl,
   redirectAfterQuoteSuccessUrl,
   redirectWithValue,
-  singleColumn,
 }: Props) {
   const [product, setProduct] = useState(productJson || {});
   const [isOpen, setIsOpen] = useState(false);
@@ -61,8 +60,6 @@ function PublicProductWithMerchiCheckout({
   const defaultJob = (productJson && productJson.defaultJob) || {};
   const [job, setJob] = useState({ client: currentUser || {}, ...defaultJob });
   const [isBuyNow, setIsBuy] = useState(false);
-
-  console.log("Log - currentUser:", currentUser);
 
   const openCheckoutModal = (job: any, isBuyNow: boolean) => {
     setJob(job);
@@ -77,22 +74,33 @@ function PublicProductWithMerchiCheckout({
     );
   };
 
+  const onSuccessfulAddToCart = () => {
+    (window as any).toggleCartOpen();
+  };
+
   const addToCart = (jobJson: any) => {
     // console.log("Log - jobJson:", jobJson);
-    doAddCartItem(jobJson, () => doToggleCartOpen(), customErrorHandler);
+
+    if (window && typeof window !== "undefined") {
+      (window as any).addCartItem(
+        jobJson,
+        onSuccessfulAddToCart,
+        customErrorHandler
+      );
+    }
   };
 
   return (
     <>
-      <div className="pt-16 pb-12 px-4 w-auto">
-        <div className="p-2 sm:p-8 flex flex-col md:flex-row flex-wrap justify-center gap-x-5 rounded-lg border border-neutral-800 bg-background">
-          <div className="flex flex-1 flex-col flex-wrap md:w-1/2 w-auto gap-y-10">
+      <div className="container pt-2 md:!pt-4 larger-425:px-5 flex justify-center">
+        <div className="w-full p-2 sm:!p-8 flex flex-col md:flex-row flex-wrap justify-center gap-x-8 rounded-lg border border-neutral-800 bg-background">
+          <div className="flex flex-1 flex-col flex-wrap w-full md:!w-1/2 content-center gap-y-10">
             {!hidePreview && product.id && <ProductImages product={product} />}
             {!hideInfo && product.id && (
               <ProductInformation product={product} />
             )}
           </div>
-          <div className="flex flex-col p-4 gap-y-5 flex-1 w-auto text-lg">
+          <div className="flex flex-col p-0 sm:p-4 gap-y-5 flex-1 w-auto text-lg">
             <MerchiProductForm
               allowAddToCart={true}
               apiUrl={`${BACKEND_URI}v6/`}
@@ -103,8 +111,6 @@ function PublicProductWithMerchiCheckout({
               hideTitle={hideTitle}
               initProduct={product}
               onAddToCart={(jobJson: any) => addToCart(jobJson)}
-              // onBuyNow={(job: any) => openCheckoutModal(job, true)}
-              // onGetQuote={(job: any) => openCheckoutModal(job, false)}
             />
           </div>
         </div>

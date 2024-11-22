@@ -1,7 +1,7 @@
 import { cleanUndefinedToNull } from "./entity-resolver";
 import { MERCHI_SDK as MERCHI } from "@/public_components/merchi-sdk";
 
-export async function useSSR(fun) {
+export async function ssrHandler(fun) {
   return {
     props: {
       data: await new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ export async function useSSR(fun) {
 }
 
 export async function fetchSSR(entity, embed) {
-  return useSSR((onSuccess, onFailed) => {
+  return ssrHandler((onSuccess, onFailed) => {
     entity.get(onSuccess, onFailed, embed);
   });
 }

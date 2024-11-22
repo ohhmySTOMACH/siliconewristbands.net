@@ -97,7 +97,7 @@ export default function About() {
   return (
     <main className="main">
       <Banner>
-        <h1 className="text-2xl">About</h1>
+        <h1 className="pl-8 text-2xl">About</h1>
       </Banner>
       <WristbandInfo />
     </main>

@@ -1,222 +1,216 @@
 .merchi-product-title {
-    font-size: 1.5rem;
-    font-weight: 900;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .merchi-embed-form_variation-container,
 .merchi-embed-form_product-group-container {
-    background: white !important;
+  background: white !important;
 }
 
 .merchi-embed-form_product-group-container {
-    padding-left: 0;
-    column-gap: 2rem;
+  padding-left: 0;
+  column-gap: 2rem;
 }
 
 .merchi-embed-form_product-group-input-qty-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .form-control {
-    border: 0.5px solid #6b7280;
-    border-radius: 5px;
-    font-size: medium;
-    font-weight: 400;
+  border: 0.5px solid #6b7280;
+  border-radius: 5px;
+  font-size: medium;
+  font-weight: 400;
 }
 
 .merchi-embed-form_image-select-option-container {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .merchi-embed-form_image-select-option-item-container {
-    flex: none;
+  flex: none;
 }
 
 .merchi-embed-form_image-select-option-item {
-    background: #0a0a0a !important;
-    border: 0.5px solid #6b7280 !important;
-    height: 100%;
+  background: #0a0a0a !important;
+  border: 0.5px solid #6b7280 !important;
+  height: 100%;
 }
 
 .merchi-embed-form_image-select-option-item svg {
-    display: none;
-    /* This hides the SVG */
+  display: none;
+  /* This hides the SVG */
 }
 
 .merchi-embed-form_image-select-option-item:hover {
-    border: 2px solid #00ADB5 !important;
-    transition: border 0.3s ease !important;
+  border: 2px solid #00adb5 !important;
+  transition: border 0.3s ease !important;
 }
 
 .merchi-embed-form_image-select-option-item.image-checked.cursor-pointer {
-    border: 2px solid #00ADB5 !important;
-    box-shadow: 0 0 8px rgba(0, 173, 181, 1);
+  border: 2px solid #00adb5 !important;
+  box-shadow: 0 0 8px rgba(0, 173, 181, 1);
 }
 
 .merchi-embed-form_product-group-input-qty-container span {
-    display: none;
+  display: none;
 }
 
 .merchi-embed-form_color-select-description {
-    background-color: #171717 !important;
+  background-color: #171717 !important;
 }
 
 .merchi-embed-form_color-select-option svg {
-    display: none;
+  display: none;
 }
 
 .merchi-embed-form_color-select-option:hover {
-    border-color: #00ADB5;
-    box-shadow: 0 0 5px rgba(0, 173, 181, 0.7);
+  border-color: #00adb5;
+  box-shadow: 0 0 5px rgba(0, 173, 181, 0.7);
 }
 
 .merchi-embed-form_color-select-option.image-checked.cursor-pointer {
-    outline: none;
-    border-color: #00ADB5;
-    box-shadow: 0 0 8px rgba(0, 173, 181, 1);
+  outline: none;
+  border-color: #00adb5;
+  box-shadow: 0 0 8px rgba(0, 173, 181, 1);
 }
 
 /* Color Picker */
 .merchi-input-color-container input[type="color"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    width: 50px;
-    /* Width of the color picker */
-    height: 50px;
-    /* Height of the color picker */
-    border-radius: 50%;
-    /* Makes it round */
-    cursor: pointer;
-    padding: 0 !important;
-    border: 3px solid #f5f6f7;
-    /* Light border */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 50px;
+  /* Width of the color picker */
+  height: 50px;
+  /* Height of the color picker */
+  border-radius: 50%;
+  /* Makes it round */
+  cursor: pointer;
+  padding: 0 !important;
+  border: 3px solid #f5f6f7;
+  /* Light border */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* To display the color inside the input */
-.merchi-input-color-container input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
+.merchi-input-color-container
+  input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
 
 .merchi-input-color-container input[type="color"]::-webkit-color-swatch {
-    border: none;
-    border-radius: 50%;
+  border: none;
+  border-radius: 50%;
 }
 
 /* Border and box-shadow effect on hover */
 .merchi-input-color-container input[type="color"]:hover {
-    border-color: #00ADB5;
-    box-shadow: 0 0 5px rgba(0, 173, 181, 0.7);
+  border-color: #00adb5;
+  box-shadow: 0 0 5px rgba(0, 173, 181, 0.7);
 }
 
 /* Focused state with a stronger shadow */
 .merchi-input-color-container input[type="color"]:focus {
-    outline: none;
-    box-shadow: 0 0 8px rgba(0, 173, 181, 1);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 173, 181, 1);
 }
 
 .merchi-input-file-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .d-flex.align-items-center.mb-1.merchi-embed-form_input-file {
-    order: 1;
+  order: 1;
 }
 
 .merchi-embed-form_dropzone {
-    order: 2 !important;
-    background-color: rgb(23 23 23 / var(--tw-bg-opacity)) !important;
+  order: 2 !important;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity)) !important;
 }
 
 .clearfix.mb-3 {
-    order: 3;
-    font-size: medium;
-    color: #4ac5fa;
+  order: 3;
+  font-size: medium;
+  color: #4ac5fa;
 }
 
 .merchi-embed-form_product-group-button-add-group,
 .merchi-embed-form_button-submit,
 .btn-primary {
-    background: linear-gradient(to bottom, #6fbef3 10%, #4a8eda 100%);
-    background-color: #5ba4e6;
-    /* Fallback color for older browsers */
-    border: 1px solid #215990;
-    color: white;
-    cursor: pointer;
-    font-weight: 900;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    outline: none;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#6fbef3', EndColorStr='#4a8eda');
+  background: linear-gradient(to bottom, #6fbef3 10%, #4a8eda 100%);
+  background-color: #5ba4e6;
+  /* Fallback color for older browsers */
+  border: 1px solid #215990;
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#6fbef3', EndColorStr='#4a8eda');
 }
 
 .merchi-embed-form_product-group-button-add-group:hover,
 .merchi-embed-form_button-submit:hover,
 .btn-primary:hover {
-    background: linear-gradient(to bottom, #74c5f9 10%, #4f96e7 100%);
-    color: white;
-    cursor: pointer;
-    font-weight: 900;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    outline: none;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#74c5f9', EndColorStr='#4f96e7');
+  background: linear-gradient(to bottom, #74c5f9 10%, #4f96e7 100%);
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#74c5f9', EndColorStr='#4f96e7');
 }
 
 .merchi-product-buttons-submit-container {
-    width: 100%;
-    align-self: center;
-    display: flex;
-    flex-direction: row;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .merchi-embed-form_button-submit {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .merchi-embed-form_product-group-button-remove {
-    background: linear-gradient(to bottom, #ffae00 10%, #f70 100%);
-    background-color: #ff9200;
-    /* Fallback color for older browsers */
-    border: 1px solid #935408;
-    color: white;
-    cursor: pointer;
-    font-weight: 900;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    outline: none;
-    /* Support for older IE versions */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffae00', EndColorStr='#ff7700');
+  background: linear-gradient(to bottom, #ffae00 10%, #f70 100%);
+  background-color: #ff9200;
+  /* Fallback color for older browsers */
+  border: 1px solid #935408;
+  color: white;
+  cursor: pointer;
+  font-weight: 900;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
+    0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  /* Support for older IE versions */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffae00', EndColorStr='#ff7700');
 }
 
 .merchi-embed-form_product-group-button-remove:hover {
-    background: linear-gradient(to bottom, #ffae3e 10%, #ff9034 100%);
-    color: white;
-    cursor: pointer;
-    font-weight: 900;
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 3px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    display: inline-block;
-    -webkit-font-smoothing: antialiased;
-    /* Ensures text is smooth on WebKit-based browsers */
-    outline: none;
+  background: linear-gradient(to bottom, #ffae3e 10%, #ff9034 100%);
 }
 
 /* WindowModel */
@@ -250,204 +244,204 @@
 } */
 
 .merchi-checkout-tab-btn.active {
-    color: white !important;
-    background-color: #5ba4e6 !important;
-    border-color: #2c6080 !important;
+  color: white !important;
+  background-color: #5ba4e6 !important;
+  border-color: #2c6080 !important;
 }
 
 .merchi-checkout-tab-btn {
-    color: #5ba4e6 !important;
-    border-color: #2c6080 !important;
+  color: #5ba4e6 !important;
+  border-color: #2c6080 !important;
 }
 
 .d-flex.justify-content-between.mt-4 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .tab-pane.false {
-    display: none;
+  display: none;
 }
 
 .modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
 }
 
 .modal-body h5 {
-    font-weight: 900;
-    font-size: larger;
-    color: #00ADB5;
+  font-weight: 900;
+  font-size: larger;
+  color: #00adb5;
 }
 
 .tab-pane {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .customer-detail-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .customer-detail-form form,
 form#addresses-form-id {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .form-group button {
-    background-color: #5ba4e6;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    outline: none;
-    justify-content: center;
+  background-color: #5ba4e6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
+  justify-content: center;
 }
 
 .form-group button:hover {
-    filter: brightness(0.75);
+  filter: brightness(0.75);
 }
 
 input.form-control {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 .merchi-dropzone-sign-up {
-    background-color: rgb(23 23 23 / var(--tw-bg-opacity)) !important;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity)) !important;
 }
 
 .modal-merchi-checkout_dropzone-text-container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .modal-merchi-checkout-shipment-option {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .modal-merchi-checkout-shipment-option .list-group-item {
-    border: 0.5px solid #6b7280;
-    border-radius: 5px;
-    padding: 0.5rem;
+  border: 0.5px solid #6b7280;
+  border-radius: 5px;
+  padding: 0.5rem;
 }
 
 .modal-merchi-checkout-shipment-option .list-group-item.active {
-    border: 1px solid #00ADB5;
+  border: 1px solid #00adb5;
 }
 
 .modal-merchi-checkout-customer-card .mt-2 button,
 .tab-pane .mt-4 button {
-    display: flex;
-    flex-direction: row;
-    font-size: small !important;
-    background-color: #00ADB5;
-    color: #f5f6f7;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    outline: none;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  font-size: small !important;
+  background-color: #00adb5;
+  color: #f5f6f7;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
+  justify-content: center;
 }
 
 .modal-merchi-checkout-customer-card .mt-2 button:hover,
 .tab-pane .mt-4 button:hover {
-    filter: brightness(0.75);
+  filter: brightness(0.75);
 }
 
 .modal-merchi-checkout-job-info-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .d-flex.flex-wrap.justify-content-between,
 .parent-variation-card,
 .modal-merchi-checkout-shipment-detail {
-    border-radius: 5px;
-    border: 0.5px solid #6b7280;
-    padding: 1rem;
+  border-radius: 5px;
+  border: 0.5px solid #6b7280;
+  padding: 1rem;
 }
 
 .modal-merchi-checkout-discount-code {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .merchi-checkout-discount-code-container {
-    flex-direction: row;
-    gap: 2rem;
-    align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
 }
 
 .merchi-checkout-discount-code-container button {
-    font-size: small !important;
-    background-color: #5ba4e6;
-    color: white;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    outline: none;
+  font-size: small !important;
+  background-color: #5ba4e6;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
 }
 
 .merchi-checkout-discount-code-container button:hover {
-    filter: brightness(0.75);
+  filter: brightness(0.75);
 }
 
 small.text-muted {
-    color: #6b7280;
+  color: #6b7280;
 }
 
 small.mb-1 {
-    color: #a3a3a3;
+  color: #a3a3a3;
 }
 
 .pt-1 {
-    display: flex;
-    border-top: 1px solid #f5f6f7;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  border-top: 1px solid #f5f6f7;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 p.d-block.mt-4.mb-0 {
-    font-size: 80%;
-    color: #6b7280;
+  font-size: 80%;
+  color: #6b7280;
 }
 
 .total-order-cost-container {
-    border-top: 1px solid;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: space-between;
+  border-top: 1px solid;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .font-italic {
-    margin-left: -21.5rem;
-    font-style: italic;
+  margin-left: -35.5rem;
+  font-style: italic;
 }
