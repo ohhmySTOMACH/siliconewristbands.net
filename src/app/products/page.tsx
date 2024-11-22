@@ -1,3 +1,4 @@
+"use server";
 import Banner from "@/components/Banner";
 import ProductTile from "@/components/ProductTile";
 import { ssrHandler } from "@/utils/merchi-ssr";
