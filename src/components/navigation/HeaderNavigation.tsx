@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../../../public/images/SiliconeWristbandLogo.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import MainNav from "./MainNav";
-import { MerchiCartModal } from "merchi_cart";
+import { MerchiCartModal, useCartContext } from "merchi_cart";
 import "@/styles/merchi-cart-modal.css";
 import "@/styles/customized-product-form.css";
 import Image from "next/image";
@@ -15,6 +15,11 @@ import { usePathname } from "next/navigation";
 function HeaderNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentPath = usePathname();
+
+  const { activeTabIndex } = useCartContext();
+  useEffect(() => {
+    console.log("Log-activeTabIndex:", activeTabIndex);
+  }, [activeTabIndex]);
 
   // useEffect(() => {
   //   const handleClick = () => {
@@ -94,16 +99,20 @@ function HeaderNavigation() {
 
           {/* Burger Menu Toggle Button */}
           <button
-            className="md:hidden ml-4 mt-2 text-gray-300 focus:outline-none border-gray-300 rounded-sm"
+            className={`md:hidden ml-4 mt-2 focus:outline-none ${
+              isMenuOpen
+                ? "text-white bg-banner-blue"
+                : " text-text-blue bg-white"
+            } border rounded-md`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            <FiMenu size={24} />
           </button>
         </div>
 
-        <div className="flex flex-col gap-2 items-start md:items-end xl:flex-row xl:items-center w-full">
-          {/* Telephone */}
-          <div className="flex flex-row w-full justify-between items-center xl:order-last mt-2 xl:!mt-0">
+        <div className="flex flex-col gap-4 items-start md:items-center md:flex-row w-full">
+          <div className="flex flex-row w-full justify-between items-center md:order-last mt-2 md:!mt-0">
+            {/* Telephone */}
             <a
               href="tel:+61390014888"
               className="flex flex-row items-center text-lg text-text-blue font-bold tracking-wide no-underline whitespace-nowrap"
@@ -117,20 +126,23 @@ function HeaderNavigation() {
                   }}
                 />
               </div>
-              <div className="ml-1 flex">
+              <div className="ml-1 md:hidden lg:flex">
                 <p className="text-xl font-medium m-0">(03) 9001 4888</p>
               </div>
             </a>
+
+            {/* Cart Button */}
             <div className="nav-cart-button">
-              {currentPath !== "/checkouts" && (
-                <MerchiCartModal
-                  cartButtonWrappedInContainer={true}
-                  domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
-                  loading={true}
-                  footer={<CheckoutFooter />}
-                  showCartItemInfo={false}
-                />
-              )}
+              {currentPath !== "/checkouts" &&
+                currentPath !== "/checkouts/checkout-success" && (
+                  <MerchiCartModal
+                    cartButtonWrappedInContainer={true}
+                    domainId={Number(process.env.NEXT_PUBLIC_DOMAIN_ID)}
+                    loading={true}
+                    footer={<CheckoutFooter />}
+                    showCartItemInfo={false}
+                  />
+                )}
             </div>
           </div>
 
@@ -138,7 +150,7 @@ function HeaderNavigation() {
           <div
             className={`${
               isMenuOpen ? "flex" : "hidden"
-            } w-full md:flex md:items-center md:space-x-4 order-3 xl:order-2`}
+            } w-full md:flex md:items-center md:space-x-4 order-3 md:order-2`}
           >
             <MainNav />
           </div>

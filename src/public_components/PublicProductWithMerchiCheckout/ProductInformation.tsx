@@ -44,7 +44,7 @@ function ListGroupItemInfo({ children, icon }: PropsListGroupItemInfo) {
         <span className="mr-3">
           <ProcedureIcon icon={icon} />
         </span>
-        <div className="text-text">{children}</div>
+        <div className="text-text w-full text-wrap">{children}</div>
       </div>
     </div>
   );
@@ -159,7 +159,7 @@ function ProductInformationSections(props: any) {
 function ProductDescription({ description }: any) {
   return (
     <div className="merchi-embed-form_information-container-list-group-item no-z-index-hover">
-      <div className="text-text">{description}</div>
+      <div className="text-text w-full break-words">{description}</div>
     </div>
   );
 }
@@ -197,7 +197,7 @@ function ProductInformation({ product }: Props) {
   };
 
   return (
-    <div className="px-0 sm:px-8">
+    <div className="w-full px-0 sm:px-8">
       <ul className="flex flex-row justify-center gap-8 list-none">
         {hasProductDesciption && (
           <Item

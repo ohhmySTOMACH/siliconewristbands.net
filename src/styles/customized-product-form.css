@@ -211,17 +211,6 @@
 
 .merchi-embed-form_product-group-button-remove:hover {
   background: linear-gradient(to bottom, #ffae3e 10%, #ff9034 100%);
-  color: white;
-  cursor: pointer;
-  font-weight: 900;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5),
-    0px 1px 3px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  display: inline-block;
-  -webkit-font-smoothing: antialiased;
-  /* Ensures text is smooth on WebKit-based browsers */
-  outline: none;
 }
 
 /* WindowModel */

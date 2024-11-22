@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import "@/styles/merchi-cart-modal.css";
+import { useRouter } from "next/navigation";
 
 export function CheckoutComponents(): JSX.Element {
   const {
@@ -19,6 +20,7 @@ export function CheckoutComponents(): JSX.Element {
     fetchingShipmentGroups,
     loadingTotals,
     setActiveTabIndex,
+    tabs,
   } = useCartContext();
 
   const { shipmentGroups } = cart;
@@ -39,18 +41,26 @@ export function CheckoutComponents(): JSX.Element {
     });
   };
 
-  // console.log("Log-domainId:", domainId);
-
   console.log("Log-fetchingShipmentGroups:", fetchingShipmentGroups);
   console.log("Log-shipmentGroups length:", shipmentGroups);
 
+  const router = useRouter();
+  const currentTabIndex = tabs.findIndex(
+    (t: any) => t.tabId === activeTabIndex
+  );
+  const activeTabValues = tabs[currentTabIndex];
+
   useEffect(() => {
-    if (activeTabIndex === 2) {
+    console.log("Log-activeTabId:", activeTabValues.tabId);
+
+    if (activeTabValues.tabId === utilities.tabIdCheckout) {
       setActivePanel("payment");
+    } else if (activeTabValues.tabId === utilities.tabIdPaymentSuccess) {
+      router.push("/checkouts/checkout-success");
     } else {
       setActivePanel("shipping");
     }
-  }, [activeTabIndex]);
+  }, [activeTabValues]);
 
   const handleBackClick = () => {
     setActiveTabIndex(utilities.tabIdShipment);
@@ -116,7 +126,7 @@ export function CheckoutComponents(): JSX.Element {
             </button>
           </div>
           <div
-            className={`rounded border border-gray-700 m-2 px-2 transition-all duration-300 ease-in-out
+            className={`rounded border border-gray-700 m-2 mt-4 px-2 transition-all duration-300 ease-in-out
               ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
               md:block md:max-h-full md:!opacity-100 overflow-hidden border-x border-b rounded-b
             `}
@@ -124,8 +134,7 @@ export function CheckoutComponents(): JSX.Element {
             <div className="py-4 bg-transparent">
               <div className="space-y-4 flex flex-col items-center">
                 <panels.PanelCartItems />
-                <panels.PanelEditCartItem cart={cart} />
-                <panels.PanelClearCart />
+                {/* <panels.PanelEditCartItem cart={cart} /> */}
                 <CartTotals />
               </div>
             </div>
@@ -169,7 +178,6 @@ export function CheckoutComponents(): JSX.Element {
               } w-full`}
             >
               <panels.PanelCartShipment />
-              {/* TODO: If no shipment group checked, disable the button */}
               <buttons.Button
                 disabled={isButtonDisabled || loadingTotals}
                 className="checkout-tab-button m-4 px-4 py-2"

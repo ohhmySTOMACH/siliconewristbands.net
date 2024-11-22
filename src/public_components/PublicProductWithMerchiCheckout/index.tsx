@@ -60,7 +60,6 @@ function PublicProductWithMerchiCheckout({
   const defaultJob = (productJson && productJson.defaultJob) || {};
   const [job, setJob] = useState({ client: currentUser || {}, ...defaultJob });
   const [isBuyNow, setIsBuy] = useState(false);
-  console.log("Log - currentUser:", currentUser);
 
   const openCheckoutModal = (job: any, isBuyNow: boolean) => {
     setJob(job);
@@ -80,7 +79,7 @@ function PublicProductWithMerchiCheckout({
   };
 
   const addToCart = (jobJson: any) => {
-    console.log("Log - jobJson:", jobJson);
+    // console.log("Log - jobJson:", jobJson);
 
     if (window && typeof window !== "undefined") {
       (window as any).addCartItem(
@@ -93,9 +92,9 @@ function PublicProductWithMerchiCheckout({
 
   return (
     <>
-      <div className="container pt-12 pb-12 larger-425:px-5 w-auto">
-        <div className="p-2 sm:!p-8 flex flex-col md:flex-row flex-wrap justify-center gap-x-5 rounded-lg border border-neutral-800 bg-background">
-          <div className="flex flex-1 flex-col flex-wrap md:w-1/2 w-auto gap-y-10">
+      <div className="container pt-2 md:!pt-4 larger-425:px-5 flex justify-center">
+        <div className="w-full p-2 sm:!p-8 flex flex-col md:flex-row flex-wrap justify-center gap-x-8 rounded-lg border border-neutral-800 bg-background">
+          <div className="flex flex-1 flex-col flex-wrap w-full md:!w-1/2 content-center gap-y-10">
             {!hidePreview && product.id && <ProductImages product={product} />}
             {!hideInfo && product.id && (
               <ProductInformation product={product} />

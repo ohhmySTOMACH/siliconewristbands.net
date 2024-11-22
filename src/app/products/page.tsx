@@ -1,12 +1,12 @@
 import Banner from "@/components/Banner";
 import ProductTile from "@/components/ProductTile";
-import { useSSR } from "@/utils/merchi-ssr";
+import { ssrHandler } from "@/utils/merchi-ssr";
 import MERCHI from "@/utils/merchi";
 
 export default async function Page() {
-  async function getProducts() {
+  async function useProducts() {
     console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
-    return useSSR(
+    return ssrHandler(
       (onSuccess: (products: any) => void, onFailed: (error: any) => void) => {
         MERCHI.products.get(onSuccess, onFailed, {
           inDomain: Number(process.env.NEXT_PUBLIC_DOMAIN_ID),
@@ -31,7 +31,7 @@ export default async function Page() {
     );
   }
 
-  const data = await getProducts();
+  const data = await useProducts();
   const products = data.props.data;
 
   return (

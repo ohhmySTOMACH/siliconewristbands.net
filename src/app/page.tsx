@@ -1,13 +1,13 @@
 // app/page.tsx
-"use server";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
-import { useSSR } from "@/utils/merchi-ssr";
+import { ssrHandler } from "@/utils/merchi-ssr";
 import ProductTile from "@/components/ProductTile";
 
-async function getProducts() {
+async function useProducts() {
   console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
-  return useSSR(
+
+  return ssrHandler(
     (onSuccess: (products: any) => void, onFailed: (error: any) => void) => {
       MERCHI.products.get(onSuccess, onFailed, {
         inDomain: Number(process.env.NEXT_PUBLIC_DOMAIN_ID),
@@ -32,30 +32,33 @@ async function getProducts() {
   );
 }
 
+const ONE_DAY = 60 * 60 * 24;
+export const revalidate = ONE_DAY;
+
 export default async function Home() {
-  const data = await getProducts();
+  const data = await useProducts();
   const products = data.props.data;
 
   return (
     <div>
       <Banner>
         <div className="container flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 p-4">
+          <div className="w-full md:w-1/2 p-2">
             <h1 className="text-2xl font-bold">We do Silicone Wristbands</h1>
             <p className="mt-2">
-              We're dedicated to doing silicone wristbands - and we do them
+              We&#39re dedicated to doing silicone wristbands - and we do them
               GREAT! Free online proofs and fast 12-day turnaround. With over 10
               years experience, we guarantee your satisfaction!
             </p>
-            <div className="mt-4 mb-4 flex gap-4 flex-col lg:flex-row">
+            <div className="mt-4 mb-4 flex flex-col gap-4 md:!gap-0 md:flex-row">
               <a
-                className="btn-blue btn-xl text-white p-4 rounded-xl mr-2 shadow-custom"
+                className="btn-blue btn-xl text-white p-4 rounded-xl mr-1 shadow-custom"
                 href="/faq"
               >
                 Visit FAQ
               </a>
               <a
-                className="btn-orange btn-xl text-white p-4 rounded-xl mr-2 shadow-custom"
+                className="btn-orange btn-xl text-white p-4 rounded-xl mr-1 shadow-custom"
                 href="/products"
               >
                 Order Now

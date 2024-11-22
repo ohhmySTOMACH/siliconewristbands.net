@@ -36,6 +36,15 @@ button.btn.cart-icon-button-class {
 .checkout-tab-button:hover,
 .checkout-button:hover {
   background: linear-gradient(to bottom, #74c5f9 10%, #4f96e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#74c5f9', EndColorStr='#4f96e7');
+}
+
+.cart-footer .btn-danger,
+.merchi-cart-clear-container .btn-danger {
+  background: linear-gradient(to bottom, #e85a71 10%, #dc3545 100%);
+  background-color: #dc3545;
+  /* Fallback color for older browsers */
+  border: 1px solid #a12231;
   color: white;
   cursor: pointer;
   font-weight: 900;
@@ -46,7 +55,14 @@ button.btn.cart-icon-button-class {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   outline: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#74c5f9', EndColorStr='#4f96e7');
+  padding: 8px;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.cart-footer .btn-danger:hover,
+.merchi-cart-clear-container .btn-danger:hover {
+  background: linear-gradient(to bottom, #ec6b80 10%, #d7283b 100%);
 }
 
 button.btn.cart-icon-button-class {
@@ -326,7 +342,14 @@ th.merchi-cart-item-table-head-right {
   width: 100% !important;
 }
 
-.checkout-info .merchi-cart-tab-content div {
+.checkout-info .merchi-cart-tab-content div:nth-of-type(3) .merchi-shipment-option {
+  padding-left: 5px !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
+.checkout-info .merchi-cart-tab-content div:nth-of-type(1),
+.checkout-info .merchi-cart-tab-content div:nth-of-type(3) {
   width: 100% !important;
   flex-direction: column;
   padding-left: 0 !important;

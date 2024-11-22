@@ -1,26 +1,26 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useCartContext } from "merchi_cart";
+import { useCartContext, buttons } from "merchi_cart";
+import "@/styles/merchi-cart-modal.css";
 
 interface NavigateButtonProps {
   href: string;
+  hasItems: boolean;
   children: React.ReactNode;
 }
 
-const CheckoutButton: React.FC<NavigateButtonProps> = ({ href, children }) => {
+const CheckoutButton: React.FC<NavigateButtonProps> = ({
+  href,
+  hasItems,
+  children,
+}) => {
   const router = useRouter();
-
-  const { isCartModalOpen, toggleCartModal, cart } = useCartContext();
+  const { toggleCartModal } = useCartContext();
 
   const handleClick = () => {
-    console.log("Log-isCartModalOpen:", isCartModalOpen);
     toggleCartModal();
-    console.log("Log-isCartModalOpen:", isCartModalOpen);
     router.push(href);
   };
-
-  const cartItems = cart.cartItems ? cart.cartItems : [];
-  const hasItems = cartItems.length > 0;
 
   return (
     (hasItems && (
@@ -35,9 +35,16 @@ const CheckoutButton: React.FC<NavigateButtonProps> = ({ href, children }) => {
 };
 
 const CheckoutFooter: React.FC = () => {
+  const { cart } = useCartContext();
+  const cartItems = cart.cartItems ? cart.cartItems : [];
+  const hasItems = cartItems.length > 0;
+
   return (
-    <div className="flex justify-center items-center bg-transparent pt-8">
-      <CheckoutButton href="/checkouts">Proceed to Checkout</CheckoutButton>
+    <div className="cart-footer flex flex-row gap-2 justify-center items-center bg-transparent pt-8">
+      {hasItems && <buttons.ButtonClearCart />}
+      <CheckoutButton href="/checkouts" hasItems={hasItems}>
+        Proceed to Checkout
+      </CheckoutButton>
     </div>
   );
 };
