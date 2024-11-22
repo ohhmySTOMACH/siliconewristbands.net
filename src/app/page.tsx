@@ -1,8 +1,12 @@
 // app/page.tsx
+"use server";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
 import { ssrHandler } from "@/utils/merchi-ssr";
 import ProductTile from "@/components/ProductTile";
+
+const ONE_DAY = 60 * 60 * 24;
+export const revalidate = ONE_DAY;
 
 async function useProducts() {
   console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
@@ -31,9 +35,6 @@ async function useProducts() {
     }
   );
 }
-
-const ONE_DAY = 60 * 60 * 24;
-export const revalidate = ONE_DAY;
 
 export default async function Home() {
   const data = await useProducts();
