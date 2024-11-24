@@ -1,5 +1,7 @@
 import Banner from "@/components/Banner";
-import ProductTile from "@/components/ProductTile";
+import ProductTileWrapper from "@/components/ProductTileWrapper";
+import LoadingFallback from "@/components/Loading";
+import { Suspense } from "react";
 import { fetchSSR } from "@/utils/merchi-ssr";
 import MERCHI from "@/utils/merchi";
 
@@ -40,7 +42,9 @@ export default async function Page() {
       <Banner>
         <h1 className="pl-8 text-2xl">Products</h1>
       </Banner>
-      <ProductTile products={products} />
+      <Suspense fallback={<LoadingFallback />}>
+        <ProductTileWrapper products={products} />
+      </Suspense>
     </main>
   );
 }

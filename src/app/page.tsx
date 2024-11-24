@@ -1,8 +1,10 @@
 // app/page.tsx
+import { Suspense } from "react";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
 import { fetchSSR } from "@/utils/merchi-ssr";
-import ProductTile from "@/components/ProductTile";
+import ProductTileWrapper from "@/components/ProductTileWrapper";
+import LoadingFallback from "@/components/Loading";
 
 // const ONE_DAY = 60 * 60 * 24;
 // export const revalidate = ONE_DAY;
@@ -36,8 +38,14 @@ async function getProducts() {
 }
 
 export default async function Home() {
-  const data = await getProducts();
-  const products = data.props.data;
+  let products = [];
+  try {
+    const data = await getProducts();
+    products = data.props.data;
+  } catch (error) {
+    console.log("Error in Home page: ", error);
+    products = [];
+  }
 
   return (
     <div>
@@ -76,7 +84,9 @@ export default async function Home() {
           </div>
         </div>
       </Banner>
-      <ProductTile products={products} />
+      <Suspense fallback={<LoadingFallback />}>
+        <ProductTileWrapper products={products} />
+      </Suspense>
       <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">
           <div className="md:w-1/2">
