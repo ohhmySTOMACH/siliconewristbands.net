@@ -1,4 +1,3 @@
-"use server";
 import MERCHI from "@/utils/merchi";
 import { fetchSSR } from "@/utils/merchi-ssr";
 import Banner from "@/components/Banner";
@@ -33,7 +32,7 @@ export default async function Page(props: any) {
   const id = props.params.id;
   const productData = await getProductData(id);
   const product = productData.props.data;
-  console.log("Log - Current Product: ", product);
+  // console.log("Log - Current Product: ", product);
 
   return (
     <main className="main">

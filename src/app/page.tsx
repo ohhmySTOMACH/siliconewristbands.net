@@ -1,43 +1,42 @@
 // app/page.tsx
-"use server";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
-import { ssrHandler } from "@/utils/merchi-ssr";
+import { fetchSSR } from "@/utils/merchi-ssr";
 import ProductTile from "@/components/ProductTile";
 
 // const ONE_DAY = 60 * 60 * 24;
 // export const revalidate = ONE_DAY;
 
-async function useProducts() {
+async function getProducts() {
   console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
+  const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
+  const products = MERCHI.products;
+  const embedProducts = {
+    inDomain: domainId,
+    embed: {
+      categories: {},
+      component: {},
+      defaultJob: {},
+      domain: {
+        activeTheme: { mainCss: {} },
+        logo: {},
+      },
+      draftTemplates: { file: {} },
+      groupBuyStatus: {},
+      groupVariationFields: { options: { linkedFile: {} } },
+      images: {},
+      independentVariationFields: { options: { linkedFile: {} } },
+      publicFiles: {},
+      featureImage: {},
+    },
+  };
 
-  return ssrHandler(
-    (onSuccess: (products: any) => void, onFailed: (error: any) => void) => {
-      MERCHI.products.get(onSuccess, onFailed, {
-        inDomain: Number(process.env.NEXT_PUBLIC_DOMAIN_ID),
-        embed: {
-          categories: {},
-          component: {},
-          defaultJob: {},
-          domain: {
-            activeTheme: { mainCss: {} },
-            logo: {},
-          },
-          draftTemplates: { file: {} },
-          groupBuyStatus: {},
-          groupVariationFields: { options: { linkedFile: {} } },
-          images: {},
-          independentVariationFields: { options: { linkedFile: {} } },
-          publicFiles: {},
-          featureImage: {},
-        },
-      });
-    }
-  );
+  const data = await fetchSSR(products, embedProducts);
+  return data;
 }
 
 export default async function Home() {
-  const data = await useProducts();
+  const data = await getProducts();
   const products = data.props.data;
 
   return (

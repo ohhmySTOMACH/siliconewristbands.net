@@ -12,7 +12,7 @@ interface ProductProps {
 }
 
 function ProductGrids({ product }: ProductProps) {
-  // console.log(product, "what here");
+  console.log(product, "what here");
 
   // if no feature image, use the first image in images
   if (!product.featureImage) {
