@@ -1,4 +1,5 @@
 // app/page.tsx
+"use server";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
 import { ssrHandler } from "@/utils/merchi-ssr";
