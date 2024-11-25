@@ -85,7 +85,7 @@ export default async function Home() {
         </div>
       </Banner>
       <Suspense fallback={<LoadingFallback />}>
-        <ProductTileWrapper products={productsData} />
+        {/* <ProductTileWrapper products={productsData} /> */}
       </Suspense>
       <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">
