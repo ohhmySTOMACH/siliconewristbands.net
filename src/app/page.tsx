@@ -41,7 +41,7 @@ async function getProducts() {
   };
 
   const data = await fetchSSR(products, parameters);
-  // console.log("Log - Products List Data: ", data);
+  console.log("Log-Operation completed, Products List Data: ", data);
   return data;
 }
 
