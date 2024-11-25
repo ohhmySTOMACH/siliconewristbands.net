@@ -1,64 +1,15 @@
 // app/page.tsx
 import { Suspense } from "react";
-import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
-import { fetchProductList, fetchSSR } from "@/utils/merchi-ssr";
 import ProductTileWrapper from "@/components/ProductTileWrapper";
 import LoadingFallback from "@/components/Loading";
+import { merchiGetProducts } from "@/public_components/merchi_entity_helpers";
 
 // const ONE_DAY = 60 * 60 * 24;
 // export const revalidate = ONE_DAY;
 
-async function getProducts() {
-  // console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
-  const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
-  const products = MERCHI.products;
-
-  const simpleParams = {
-    inDomain: domainId,
-    limit: 1,
-  };
-
-  const parameters = {
-    inDomain: domainId,
-    categoryId: MERCHI.getQueryStringValue("category_id"),
-    limit: 30,
-    offset: 0,
-    order: "desc",
-    sort: "id",
-    q: "",
-    embed: {
-      categories: {},
-      component: {},
-      defaultJob: {},
-      domain: {
-        activeTheme: { mainCss: {} },
-        logo: {},
-      },
-      draftTemplates: { file: {} },
-      groupBuyStatus: {},
-      groupVariationFields: { options: { linkedFile: {} } },
-      images: {},
-      independentVariationFields: { options: { linkedFile: {} } },
-      publicFiles: {},
-      featureImage: {},
-    },
-  };
-
-  // const data = await fetchSSR(products, simpleParams);
-  const data = await fetchProductList(parameters);
-  console.log("Log-Operation completed, Products List Data: ", data);
-  return data;
-}
-
 export default async function Home() {
-  const products = await getProducts();
-  const productsData = products.props.data;
-  // console.log(
-  //   "Log - Type of Products List Data: ",
-  //   typeof products.props.data[0]
-  // );
-  // console.log("Log - Products List Data: ", products.props.data[0]);
+  const productsData = await merchiGetProducts();
 
   return (
     <div>
@@ -98,7 +49,7 @@ export default async function Home() {
         </div>
       </Banner>
       <Suspense fallback={<LoadingFallback />}>
-        {/* <ProductTileWrapper products={productsData} /> */}
+        <ProductTileWrapper products={productsData} />
       </Suspense>
       <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">

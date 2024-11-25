@@ -51,12 +51,10 @@ export async function ssrHandler(fun) {
 }
 
 export async function fetchSSR(entity, params) {
-  // console.log("Log-fetchSSR params: ", params);
   console.log("Log-fetchSSR entity: ", entity);
   return ssrHandler((onSuccess, onFailed) => {
     entity.get(
       (data) => {
-        // console.log("Entity.get success:", data);
         onSuccess(data);
       },
       (error) => {
@@ -75,10 +73,28 @@ export async function fetchProductList(params) {
         onSuccess(data);
       },
       (error) => {
-        console.error("products.get error:", error);
+        console.error("Products.get error:", error);
         onFailed(error);
       },
       params
+    );
+  });
+}
+
+export async function fetchProductDetail(productId, embed) {
+  const currentProduct = new MERCHI.Product();
+  currentProduct.id(productId);
+
+  return ssrHandler((onSuccess, onFailed) => {
+    currentProduct.get(
+      (data) => {
+        onSuccess(data);
+      },
+      (error) => {
+        console.error("Product.get error:", error);
+        onFailed(error);
+      },
+      embed
     );
   });
 }
