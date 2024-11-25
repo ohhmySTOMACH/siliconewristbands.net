@@ -1,28 +1,16 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleNotch,
-  faDownload,
   faDraftingCompass,
   faExclamationCircle,
   faHammer,
   faLink,
   faStopwatch,
-  faTrashAlt,
   faTruck,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  Button,
-  ListGroup,
-  ListGroupItem,
-  Nav,
-  NavItem,
-  NavLink,
-  TabContent,
-  TabPane,
-} from "reactstrap";
+import { TabContent, TabPane } from "reactstrap";
 
 function ProcedureIcon({ icon }: any) {
   return (

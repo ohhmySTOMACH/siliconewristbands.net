@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { productFeatureImageUrl, productNotFoundUrl } from "../utilities";
+import { productFeatureImageUrl, productNotFoundUrl } from "@/utils/utilities";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import Image from "next/image";

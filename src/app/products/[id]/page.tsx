@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Banner from "@/components/Banner";
 import PublicProductWithMerchiCheckout from "@/public_components/PublicProductWithMerchiCheckout";
-import { merchiGetProduct } from "@/public_components/merchi_entity_helpers";
+import { merchiGetProduct } from "@/utils/merchi_entity_helpers";
 
 export default async function Page(props: any) {
   const id = props.params.id;

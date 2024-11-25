@@ -2,7 +2,7 @@ import Banner from "@/components/Banner";
 import ProductTileWrapper from "@/components/ProductTileWrapper";
 import LoadingFallback from "@/components/Loading";
 import { Suspense } from "react";
-import { merchiGetProducts } from "@/public_components/merchi_entity_helpers";
+import { merchiGetProducts } from "@/utils/merchi_entity_helpers";
 
 export default async function Page() {
   const productsData = await merchiGetProducts();

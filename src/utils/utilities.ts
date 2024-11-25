@@ -1,5 +1,5 @@
 import { MERCHI_SDK } from "./merchi-sdk";
-import { externalUrlFor } from "./url_map";
+import { externalUrlFor } from "@/utils/url_map";
 
 export function uploadNewFile(event: any, updateFilesCallback: any) {
   const element = event.target;

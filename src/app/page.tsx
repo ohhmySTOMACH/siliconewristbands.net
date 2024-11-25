@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Banner from "@/components/Banner";
 import ProductTileWrapper from "@/components/ProductTileWrapper";
 import LoadingFallback from "@/components/Loading";
-import { merchiGetProducts } from "@/public_components/merchi_entity_helpers";
+import { merchiGetProducts } from "@/utils/merchi_entity_helpers";
 
 // const ONE_DAY = 60 * 60 * 24;
 // export const revalidate = ONE_DAY;

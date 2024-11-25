@@ -1,7 +1,11 @@
-import React from 'react';
-import { Modal, ModalBody } from 'reactstrap';
-import MerchiCheckout from 'merchi_checkout';
-import { getNextBackendUri, getNextFrontendUri, getNextGoogleApi } from '../utilities';
+import React from "react";
+import { Modal, ModalBody } from "reactstrap";
+import MerchiCheckout from "merchi_checkout";
+import {
+  getNextBackendUri,
+  getNextFrontendUri,
+  getNextGoogleApi,
+} from "@/utils/utilities";
 
 interface Props {
   currentUser?: any;
@@ -41,7 +45,7 @@ function ModalMerchiCheckout({
       isOpen={isOpen}
       toggle={toggleMerchiCheckout}
       fullscreen={true}
-      className='modal_merchi-checkout'
+      className="modal_merchi-checkout"
     >
       <ModalBody>
         <MerchiCheckout

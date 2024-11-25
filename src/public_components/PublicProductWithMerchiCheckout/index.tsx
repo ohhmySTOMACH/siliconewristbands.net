@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-// import { doAddCartItem, doToggleCartOpen } from "merchi_cart/src";
-import { getNextBackendUri } from "../utilities";
+import { getNextBackendUri } from "@/utils/utilities";
 import MerchiProductForm from "merchi_product_form";
 import dynamic from "next/dynamic";
 import "@/styles/customized-product-form.css";
