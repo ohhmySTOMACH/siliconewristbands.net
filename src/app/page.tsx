@@ -17,20 +17,20 @@ async function getProducts() {
   const embedProducts = {
     inDomain: domainId,
     embed: {
-      categories: {},
-      component: {},
-      defaultJob: {},
-      domain: {
-        activeTheme: { mainCss: {} },
-        logo: {},
-      },
-      draftTemplates: { file: {} },
-      groupBuyStatus: {},
-      groupVariationFields: { options: { linkedFile: {} } },
-      images: {},
-      independentVariationFields: { options: { linkedFile: {} } },
-      publicFiles: {},
-      featureImage: {},
+      // categories: {},
+      // component: {},
+      // defaultJob: {},
+      // domain: {
+      //   activeTheme: { mainCss: {} },
+      //   logo: {},
+      // },
+      // draftTemplates: { file: {} },
+      // groupBuyStatus: {},
+      // groupVariationFields: { options: { linkedFile: {} } },
+      // images: {},
+      // independentVariationFields: { options: { linkedFile: {} } },
+      // publicFiles: {},
+      // featureImage: {},
     },
   };
 
