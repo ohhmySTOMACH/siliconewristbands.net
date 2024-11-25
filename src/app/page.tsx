@@ -40,7 +40,12 @@ async function getProducts() {
 
 export default async function Home() {
   const products = await getProducts();
-  console.log("Log - Products List Data: ", products);
+  const productsData = products.props.data;
+  // console.log(
+  //   "Log - Type of Products List Data: ",
+  //   typeof products.props.data[0]
+  // );
+  // console.log("Log - Products List Data: ", products.props.data[0]);
 
   return (
     <div>
@@ -80,7 +85,7 @@ export default async function Home() {
         </div>
       </Banner>
       <Suspense fallback={<LoadingFallback />}>
-        <ProductTileWrapper products={products} />
+        <ProductTileWrapper products={productsData} />
       </Suspense>
       <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">
