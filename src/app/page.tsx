@@ -13,6 +13,7 @@ async function getProducts() {
   console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
   const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
   const products = MERCHI.products;
+
   const embedProducts = {
     inDomain: domainId,
     embed: {
@@ -32,6 +33,8 @@ async function getProducts() {
       featureImage: {},
     },
   };
+
+  console.log("Log - Productsqwe: ", products);
 
   const data = await fetchSSR(products, embedProducts);
   return data;
