@@ -8,8 +8,14 @@ import MERCHI from "@/utils/merchi";
 async function getProducts() {
   const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
   const products = MERCHI.products;
-  const embedProducts = {
+  const parameters = {
     inDomain: domainId,
+    categoryId: MERCHI.getQueryStringValue("category_id"),
+    limit: 30,
+    offset: 0,
+    order: "desc",
+    sort: "id",
+    q: "",
     embed: {
       categories: {},
       component: {},
@@ -28,7 +34,7 @@ async function getProducts() {
     },
   };
 
-  const data = await fetchSSR(products, embedProducts);
+  const data = await fetchSSR(products, parameters);
   return data;
 }
 

@@ -14,27 +14,34 @@ async function getProducts() {
   const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
   const products = MERCHI.products;
 
-  const embedProducts = {
+  const parameters = {
     inDomain: domainId,
+    categoryId: MERCHI.getQueryStringValue("category_id"),
+    limit: 30,
+    offset: 0,
+    order: "desc",
+    sort: "id",
+    q: "",
     embed: {
-      // categories: {},
-      // component: {},
-      // defaultJob: {},
-      // domain: {
-      //   activeTheme: { mainCss: {} },
-      //   logo: {},
-      // },
-      // draftTemplates: { file: {} },
-      // groupBuyStatus: {},
-      // groupVariationFields: { options: { linkedFile: {} } },
-      // images: {},
-      // independentVariationFields: { options: { linkedFile: {} } },
-      // publicFiles: {},
-      // featureImage: {},
+      categories: {},
+      component: {},
+      defaultJob: {},
+      domain: {
+        activeTheme: { mainCss: {} },
+        logo: {},
+      },
+      draftTemplates: { file: {} },
+      groupBuyStatus: {},
+      groupVariationFields: { options: { linkedFile: {} } },
+      images: {},
+      independentVariationFields: { options: { linkedFile: {} } },
+      publicFiles: {},
+      featureImage: {},
     },
   };
 
-  const data = await fetchSSR(products, embedProducts);
+  const data = await fetchSSR(products, parameters);
+  // console.log("Log - Products List Data: ", data);
   return data;
 }
 
@@ -85,7 +92,7 @@ export default async function Home() {
         </div>
       </Banner>
       <Suspense fallback={<LoadingFallback />}>
-        {/* <ProductTileWrapper products={productsData} /> */}
+        <ProductTileWrapper products={productsData} />
       </Suspense>
       <div className="container w-full px-2 sm:px-16 my-8">
         <div className="w-full bg-white pt-4 px-8 flex flex-col md:flex-row items-center rounded border border-gray-700 shadow-md">
