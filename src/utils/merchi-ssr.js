@@ -6,14 +6,11 @@ export async function ssrHandler(fun) {
     props: {
       data: await new Promise((resolve, reject) => {
         fun((data) => {
-          // console.log("Log - SSR Data", data);
-
           if (Array.isArray(data)) {
             const resolution = cleanUndefinedToNull(MERCHI.toJsonList(data));
             resolve(resolution);
           } else {
             const resolution = cleanUndefinedToNull(MERCHI.toJson(data));
-            // console.log("Log - SSR Data Object", resolution);
             resolve(resolution);
           }
         }, reject);
