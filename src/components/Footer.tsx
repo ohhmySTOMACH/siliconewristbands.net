@@ -12,15 +12,15 @@ export default function Footer() {
                 Home
               </a>
               <span className="mx-1">|</span>
-              <a href="" className="hover:underline">
+              <a href="/products" className="hover:underline">
                 Order Now
               </a>
               <span className="mx-1">|</span>
-              <a href="" className="hover:underline">
+              <a href="/faq" className="hover:underline">
                 FAQ
               </a>
               <span className="mx-1">|</span>
-              <a href="" className="hover:underline">
+              <a href="/contact" className="hover:underline">
                 Contact
               </a>
             </div>
@@ -32,7 +32,8 @@ export default function Footer() {
           </div>
           <div className="flex flex-col md:flex-row items-center pb-1">
             <div className="pb-1">
-              © Silicone Wristbands Australia. {new Date().getFullYear()} |&nbsp;
+              © Silicone Wristbands Australia. {new Date().getFullYear()}{" "}
+              |&nbsp;
             </div>
             <div>
               Powered by{" "}

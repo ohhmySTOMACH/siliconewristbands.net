@@ -39,13 +39,13 @@ async function getProducts() {
 
 export default async function Home() {
   let products = [];
-  try {
-    const data = await getProducts();
-    products = data.props.data;
-  } catch (error) {
-    console.log("Error in Home page: ", error);
-    products = [];
-  }
+  // try {
+  const data = await getProducts();
+  products = data.props.data;
+  // } catch (error) {
+  //   console.log("Error in Home page: ", error);
+  //   products = [];
+  // }
 
   return (
     <div>

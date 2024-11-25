@@ -29,9 +29,16 @@ async function getProductData(id: string) {
 }
 
 export default async function Page(props: any) {
+  let currentProduct = {};
   const id = props.params.id;
-  const productData = await getProductData(id);
-  const product = productData.props.data;
+
+  try {
+    const productData = await getProductData(id);
+    currentProduct = productData.props.data;
+  } catch (error) {
+    console.log("Error in Products page: ", error);
+    currentProduct = {};
+  }
   // console.log("Log - Current Product: ", product);
 
   return (
@@ -40,7 +47,7 @@ export default async function Page(props: any) {
         <h1 className="pl-8 text-2xl">Products</h1>
       </Banner>
       <PublicProductWithMerchiCheckout
-        productJson={product}
+        productJson={currentProduct}
         hideDomainName={true}
       />
     </main>
