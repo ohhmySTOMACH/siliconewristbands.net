@@ -34,8 +34,14 @@ async function getProducts() {
 }
 
 export default async function Page() {
-  const data = await getProducts();
-  const products = data.props.data;
+  let products = [];
+  try {
+    const data = await getProducts();
+    products = data.props.data;
+  } catch (error) {
+    console.log("Error in Products page: ", error);
+    products = [];
+  }
 
   return (
     <main className="main">
