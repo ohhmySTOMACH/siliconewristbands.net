@@ -29,18 +29,8 @@ async function getProductData(id: string) {
 }
 
 export default async function Page(props: any) {
-  let currentProduct = {};
   const id = props.params.id;
-
-  try {
-    const productData = await getProductData(id);
-    console.log("Log - Single Product Data: ", productData);
-    currentProduct = productData.props.data;
-    console.log("Log - Current Product: ", currentProduct);
-  } catch (error) {
-    console.log("Error in Products ID page: ", error);
-    currentProduct = {};
-  }
+  const currentProduct = await getProductData(id);
 
   return (
     <main className="main">

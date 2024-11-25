@@ -6,7 +6,6 @@ import { fetchSSR } from "@/utils/merchi-ssr";
 import MERCHI from "@/utils/merchi";
 
 async function getProducts() {
-  console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
   const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
   const products = MERCHI.products;
   const embedProducts = {
@@ -39,7 +38,6 @@ export default async function Page() {
     const data = await getProducts();
     products = data.props.data;
   } catch (error) {
-    console.log("Error in Products page: ", error);
     products = [];
   }
 

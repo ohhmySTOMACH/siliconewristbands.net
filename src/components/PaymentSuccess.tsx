@@ -9,8 +9,6 @@ export default function PaymentSuccess() {
 
   const { invoice = {} } = cart;
   const { domain, id, unpaid } = invoice;
-  console.log("Log-domain:", domain);
-  console.log("Log-id:", id);
   const email =
     domain && domain.company
       ? utilities.companyPrimaryAddress(domain.company)
@@ -20,9 +18,7 @@ export default function PaymentSuccess() {
   const handleClick = async () => {
     try {
       await createCartAndCookie(() => {
-        console.log("Log-Cart complete action resolved");
         router.push("/");
-        console.log("Log-Navigation to homepage triggered");
       });
     } catch (error) {
       console.error("Error in setCartComplete:", error);

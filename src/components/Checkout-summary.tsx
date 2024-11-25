@@ -41,9 +41,6 @@ export function CheckoutComponents(): JSX.Element {
     });
   };
 
-  console.log("Log-fetchingShipmentGroups:", fetchingShipmentGroups);
-  console.log("Log-shipmentGroups length:", shipmentGroups);
-
   const router = useRouter();
   const currentTabIndex = tabs.findIndex(
     (t: any) => t.tabId === activeTabIndex
@@ -51,8 +48,6 @@ export function CheckoutComponents(): JSX.Element {
   const activeTabValues = tabs[currentTabIndex];
 
   useEffect(() => {
-    console.log("Log-activeTabId:", activeTabValues.tabId);
-
     if (activeTabValues.tabId === utilities.tabIdCheckout) {
       setActivePanel("payment");
     } else if (activeTabValues.tabId === utilities.tabIdPaymentSuccess) {

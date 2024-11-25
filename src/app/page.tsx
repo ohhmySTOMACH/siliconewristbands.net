@@ -10,7 +10,7 @@ import LoadingFallback from "@/components/Loading";
 // export const revalidate = ONE_DAY;
 
 async function getProducts() {
-  console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
+  // console.log("Log-domainId type:", typeof process.env.NEXT_PUBLIC_DOMAIN_ID);
   const domainId = Number(process.env.NEXT_PUBLIC_DOMAIN_ID);
   const products = MERCHI.products;
 
@@ -34,22 +34,13 @@ async function getProducts() {
     },
   };
 
-  console.log("Log - Productsqwe: ", products);
-
   const data = await fetchSSR(products, embedProducts);
   return data;
 }
 
 export default async function Home() {
-  let products: any[] = [];
-  // try {
-  const data = await getProducts();
-  console.log("Log - Data: ", data);
-  // products = data.props.data;
-  // } catch (error) {
-  //   console.log("Error in Home page: ", error);
-  //   products = [];
-  // }
+  const products = await getProducts();
+  console.log("Log - Products List Data: ", products);
 
   return (
     <div>

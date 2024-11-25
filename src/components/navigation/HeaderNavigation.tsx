@@ -17,9 +17,7 @@ function HeaderNavigation() {
   const currentPath = usePathname();
 
   const { activeTabIndex } = useCartContext();
-  useEffect(() => {
-    console.log("Log-activeTabIndex:", activeTabIndex);
-  }, [activeTabIndex]);
+  useEffect(() => {}, [activeTabIndex]);
 
   // useEffect(() => {
   //   const handleClick = () => {
