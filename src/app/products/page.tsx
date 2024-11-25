@@ -2,7 +2,7 @@ import Banner from "@/components/Banner";
 import ProductTileWrapper from "@/components/ProductTileWrapper";
 import LoadingFallback from "@/components/Loading";
 import { Suspense } from "react";
-import { fetchSSR } from "@/utils/merchi-ssr";
+import { fetchProductList, fetchSSR } from "@/utils/merchi-ssr";
 import MERCHI from "@/utils/merchi";
 
 async function getProducts() {
@@ -34,7 +34,7 @@ async function getProducts() {
     },
   };
 
-  const data = await fetchSSR(products, parameters);
+  const data = await fetchProductList(parameters);
   return data;
 }
 

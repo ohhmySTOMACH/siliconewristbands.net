@@ -67,3 +67,18 @@ export async function fetchSSR(entity, params) {
     );
   });
 }
+
+export async function fetchProductList(params) {
+  return ssrHandler((onSuccess, onFailed) => {
+    MERCHI.products.get(
+      (data) => {
+        onSuccess(data);
+      },
+      (error) => {
+        console.error("products.get error:", error);
+        onFailed(error);
+      },
+      params
+    );
+  });
+}

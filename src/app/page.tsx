@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import MERCHI from "@/utils/merchi";
 import Banner from "@/components/Banner";
-import { fetchSSR } from "@/utils/merchi-ssr";
+import { fetchProductList, fetchSSR } from "@/utils/merchi-ssr";
 import ProductTileWrapper from "@/components/ProductTileWrapper";
 import LoadingFallback from "@/components/Loading";
 
@@ -45,7 +45,8 @@ async function getProducts() {
     },
   };
 
-  const data = await fetchSSR(products, simpleParams);
+  // const data = await fetchSSR(products, simpleParams);
+  const data = await fetchProductList(parameters);
   console.log("Log-Operation completed, Products List Data: ", data);
   return data;
 }
