@@ -7,7 +7,7 @@ function ErrorFallback() {
       <div className="bg-red-50 border border-red-200 rounded p-4">
         <h2 className="text-red-800 font-semibold">Temporarily Unavailable</h2>
         <p className="text-red-600">
-          We're experiencing technical difficulties. Please try again later.
+          We&#39;re experiencing technical difficulties. Please try again later.
         </p>
       </div>
     </div>

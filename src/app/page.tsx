@@ -54,7 +54,7 @@ export default async function Home() {
           <div className="w-full md:w-1/2 p-2">
             <h1 className="text-2xl font-bold">We do Silicone Wristbands</h1>
             <p className="mt-2">
-              We&#39re dedicated to doing silicone wristbands - and we do them
+              We&#39;re dedicated to doing silicone wristbands - and we do them
               GREAT! Free online proofs and fast 12-day turnaround. With over 10
               years experience, we guarantee your satisfaction!
             </p>

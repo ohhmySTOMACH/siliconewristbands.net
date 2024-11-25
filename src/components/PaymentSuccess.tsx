@@ -44,7 +44,7 @@ export default function PaymentSuccess() {
       ) : (
         <p className="merchi-cart-success-message text-center">
           Your order #{id} is being processed and you should receive an email
-          from us shortly. If you haven&#39t heard from us within 24 hours
+          from us shortly. If you haven&#39;t heard from us within 24 hours
           please feel free to contact us
           {email ? ` at ${email.emailAddress}.` : "."}
         </p>
