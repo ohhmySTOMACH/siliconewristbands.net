@@ -51,11 +51,12 @@ export async function ssrHandler(fun) {
 }
 
 export async function fetchSSR(entity, params) {
-  console.log("Log-fetchSSR params: ", params);
+  // console.log("Log-fetchSSR params: ", params);
+  console.log("Log-fetchSSR entity: ", entity);
   return ssrHandler((onSuccess, onFailed) => {
     entity.get(
       (data) => {
-        console.log("Entity.get success:", data);
+        // console.log("Entity.get success:", data);
         onSuccess(data);
       },
       (error) => {
