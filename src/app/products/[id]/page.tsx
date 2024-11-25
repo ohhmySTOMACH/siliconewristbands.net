@@ -34,12 +34,13 @@ export default async function Page(props: any) {
 
   try {
     const productData = await getProductData(id);
+    console.log("Log - Single Product Data: ", productData);
     currentProduct = productData.props.data;
+    console.log("Log - Current Product: ", currentProduct);
   } catch (error) {
-    console.log("Error in Products page: ", error);
+    console.log("Error in Products ID page: ", error);
     currentProduct = {};
   }
-  // console.log("Log - Current Product: ", product);
 
   return (
     <main className="main">
